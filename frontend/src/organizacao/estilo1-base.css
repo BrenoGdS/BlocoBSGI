@@ -10,7 +10,7 @@ estilo1-base.css -
 *{ /* Para aplicar para todas as tags, usar asterisco */
         box-sizing: border-box;
         margin:0; /*tirou todas as margens */
-	padding:0;
+	padding:0; 
 }
 
 /* parece não funcionar com o boostrap - funciona se <link href="estilo1.css> for a última linha */
