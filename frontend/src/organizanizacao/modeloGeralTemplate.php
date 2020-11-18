@@ -1,51 +1,66 @@
 <!HTML>
 
-<!-- form_inserc_org.php
+<!-- form_inserc_org.php 
      formulario de insercao das organizaçoes
-<!-- versao 3.1 - baseado em cadastro_bd_pdo (form-insercao.php) -->
+<!-- versao 2.7 - baseado em cadastro_bd_pdo (form-insercao.php) -->
+
 
 <html lang="pt-br">
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="estilo1-base.css" rel="stylesheet">
 
     <title> BSGI - Organização </title>
-
-    </head>
-    
-    <body>
-    <header>
-        <!-- ATENÇÃO: ainda preciso achar um jeito de colocar os ícones em um bloco dimensionável -->
-  	<div id="cab_esq">
-            <img class="contain" src="..\src\img\BSGI-logo2c.png" align=left width="100%"></div>
-        <!--<div id="cab_central"> 
-            <a>Nome do Usuário</a>
-        </div> -->
-        <div id="cab_dir">
-                <a href="../user"><img src="..\src\img\ic-users-b2-128.png" height="10%" ></a>
-                <a href="../info"><img src="..\src\img\ic-information-b2-128.png" height="9%" ></a>
-                <a href="https://www.instagram.com" target="_blank"><img src="..\src\img\ic-instagram-b2-128.png" height="8.1%" ></a>
-                <a href="https://www.facebook.com/" target="_blank"><img src="..\src\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="../home"><img src="..\src\img\ic-home-256.png" height="9%"></a>
-        </div></header>
-    
-    <section id="barra"> </section>
-    <section id="main">
-        <h1 class="titulo">Cadastro Organizacional</h1>
+  <!--
+                
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	-->
         
-        <!-- *** FORMULÁRIO PARA INSERÇÃO DE DADOS *** -->
+    </head>
 
+<body>
+    <header>
+        <!-- ATENÇÃO: ainda preciso achar um jeito de colocar os ícones em um bloco dimensionável
+             NÃO está alinhando corretamente com o texto abaixo dos ícones (que é capaz de nem ter) -->
+  
+  	<div id="cab_esq">
+		<img class="contain" src="..\img\BSGI-logo2c.png" align=left width="70%">
+	</div> 
+	<div id="cab_dir">
+
+            <style>
+                #cab_dir{
+                    display: inline-block;
+                }
+            </style>          
+	</div>
+    </header>
+
+    <nav id="navegar"> 
+	<a href="#" class="opcoes">Perfil</a>
+	<a href="#" class="opcoes">Info</a>
+	<a href="#" class="opcoes">Instagram</a>
+	<a href="#" class="opcoes">Facebook</a>
+	<a href="#" class="opcoes">Home</a>
+    </nav>
+   
+
+    <section id="barra"> </section>
+    <section id="main"> 
+        <h1 class="titulo">Cadastro Organizacional</h1>
+
+    
+    <!-- *** FORMULÁRIO PARA INSERÇÃO DE DADOS *** -->
+    
     <form id="formulario" action="insercao_organizacao-v1.2.php" method="GET">
         <style>
-            /* não sei pra que */
-            label {
-                /* padding: 12px 12px 12px 0; */
-                display: inline-block;
-            }            
-            
+
             /* botão de limpar  */
             /* Se não precisar do botão, retirar essa parte */
             input[type=reset] {
@@ -88,25 +103,27 @@
             }
         </style>
 
-        <div id="divform">
+        <div>
             <!-- área central da página -->
             
         </div>    
         
         
-    <?php
+<?php
 
-        # cria conexão com banco de dados
-        include_once "../../inc/conectabd.php"; // ativar o database
-        //include_once "../inc/funcoes_org.php";  //VERIFICAR
-        
-        ?>
-        
-        
+    # cria conexão com banco de dados
+    //include_once "../inc/conectabd.php"; // ativar o database
+        //include_once "../inc/funcoes.inc.php";  //VERIFICAR
+        //monta_organizacao($conn);               // CRIAR FUNÇAO
+ 
+
+    ?>
     <!-- Se não precisar do botão, retirar essa parte -->
     <input type="submit" value="Cadastrar" class="btn btn-primary btn-sm">
     <input type="reset" value="Limpar" class="btn btn-primary btn-sm">
     </form>
+       
+        
         
 </body>
 </html>
