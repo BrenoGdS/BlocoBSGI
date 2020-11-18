@@ -2,7 +2,7 @@
 
 <!-- form_inserc_org.php
      formulario de insercao das organizaçoes
-<!-- versao 3.1 - baseado em cadastro_bd_pdo (form-insercao.php) -->
+<!-- versao 3.0 - baseado em cadastro_bd_pdo (form-insercao.php) -->
 
 <html lang="pt-br">
     <head>
@@ -25,11 +25,11 @@
             <a>Nome do Usuário</a>
         </div> -->
         <div id="cab_dir">
-                <a href="../user"><img src="..\img\ic-users-b2-128.png" height="10%" ></a>
-                <a href="../info"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
-                <a href="https://www.instagram.com" target="_blank"><img src="..\img\ic-instagram-b2-128.png" height="8.1%" ></a>
-                <a href="https://www.facebook.com/" target="_blank"><img src="..\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="../home"><img src="..\img\ic-home-256.png" height="9%"></a>
+            <a href="../user"><img src="..\img\icon3-user.png" height="9%" ></a>
+            <a href="../info"><img src="..\img\icon3-information.png" height="9%"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="..\img\icon-instagram.png" height="9%"></a>
+            <a href="https://www.facebook.com/" target="_blank"><img src="..\img\icon-facebook.png" height="9%"></a>
+            <a href="../home"><img src="..\img\icon-facebook.png" height="9%"></a>
         </div></header>
     
     <section id="barra"> </section>
