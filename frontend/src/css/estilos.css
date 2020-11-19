@@ -44,24 +44,7 @@ a:hover{
 }
 /* Cabeçalho central: nome usuário */
 #cab_central{
-/*
-        display: inline-block;
-        background: grey; 
-        border-radius: 10px;
-	color: white; /* cor da letra */
-        /* float: right; */
-/*	font-family: verdana;
-	font-size: 10pt;
-        font-weight: bold;
-        filter: drop-shadow(0 2px 2px rgb(200, 200, 200));
-        line-height:10px; /* alinha o texto na vertical */
-/*        margin-left: 10%; /* margem externa */ 
-        /*margin-top:20px;*/
-/*        margin-bottom:1px;
-        padding-left: 3%;
-        padding-top: 10px;
-        width: 15%;
-    */
+
 }
 /* Cabeçalho direito: ícones */
 #cab_dir{
