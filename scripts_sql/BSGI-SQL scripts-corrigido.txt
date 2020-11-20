@@ -71,8 +71,8 @@ CREATE TABLE Tb_UF (
 );
 
 CREATE TABLE Tb_Cidade (
-    Id_Cidade INT(4) AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    Id_UF CHAR(2),
+    id_cidade INT(4) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_UF CHAR(2),
     desc_cidade VARCHAR(30) NOT NULL
 );
 
