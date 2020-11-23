@@ -1,0 +1,153 @@
+/*
+estilos.css - 
+*/
+/* 
+    Created on : 05/11/2020, 11:03:27
+    Author     : Rodrigo Brittes
+*/
+
+
+*{ /* Para aplicar para todas as tags, usar asterisco */
+        box-sizing: border-box;
+        margin:0; /*tirou todas as margens */
+	padding:0;
+}
+
+/* parece não funcionar com o boostrap - funciona se <link href="estilo.css> for a última linha */
+/* não tem necessidade depois que saiu a barra de navegação com os links */
+a{
+	color:#000000; 
+	font-family:verdana;
+	font-size:14pt;
+	font-weight:bold; /* negrito */
+	margin-right:25px;
+	text-decoration: none; /* retirar sublinhado */
+}
+a:hover{
+	color: dodgerblue;
+        text-decoration:none; /* retirar sublinhado - funciona se <link href="estilo.css> for a última linha */
+}
+
+
+
+/* Figuras do cabeçalho */
+/* Cabeçalho esquerdo: logomarca */
+#cab_esq{
+        /* background-color: white; */
+        display: inline-block;
+	height: 145px;      /* estava 160px */
+        object-fit: contain;        
+        padding-top:8px;
+        padding-left:15px;
+	width:21%;      /* estava 30%? */ 
+ 
+}
+/* Cabeçalho central: nome usuário */
+#cab_central{
+
+}
+/* Cabeçalho direito: ícones */
+#cab_dir{
+        /* background-color: white; */
+        display: inline-block;
+        float: right;
+        padding-right:5px;        
+        padding-top:4%; 
+        /* height: 145px; */
+        /* width:55%; */
+        word-spacing:48px;     
+}
+
+
+/* Menu de navegação sob os ícones */
+/* não tem necessidade depois que saiu a barra de navegação com os links */
+/* Regra pelo atributo id do html */
+#navegar{
+	background-color: whitesmoke;   /* tirar esse fundo depois */
+	width:100%; 
+	height:30px;
+	text-align:right;
+	word-spacing:2px;  /* adiciona espaço entre as palavras - era 40px; depois 26px */
+
+}
+
+/* Barra colorida */
+#barra{
+	width:100%; 
+	height: 10px;
+	float: left; 
+	background-color: gold;	
+        background-image: linear-gradient(to right, dodgerblue,dodgerblue, gold,gold,gold,gold,gold,gold, red,red);
+}
+
+
+
+
+/* Corpo da página */
+#main{
+       
+        background-image: url('../img/web3-triangles-vertical-background.jpg'); 
+        background-position: center;
+        background-repeat: repeat-x; 
+        font-family:verdana;
+        height: 95%;
+	line-height:30px; /* alinha o texto na vertical */
+        padding-left: 15px;
+        width: auto;
+	
+}
+
+/* Divs p/ organizar formulários */
+/* Usei essas divs para separar o formulário em 3 partes horizontais, ou quantas forem necessárias */
+#divFormOrg1{
+    /* float: center; */
+    margin-left:11%; /* margem externa - era 20% */
+}
+#divFormOrg2{
+    /* float: center; */
+    margin-left:11%; /* margem externa - era 20% */
+}
+#divFormOrg3{
+    /* float: center; */
+    margin-left:11%; /* margem externa - era 20% */
+}
+
+
+
+
+
+
+
+
+/* CLASSES */
+/* Regra pelo atributo class do html */ /* Quando vai aplicar o mesmo estilo em vários pontos */
+/* Não lembro onde é isso */
+.opcoes{
+	margin-left:0px; /* margem externa */
+	padding-left:40px; /*margem interna*/
+	padding-right:10px;
+}
+
+/* Título do corpo da página */
+.titulo{
+
+        /* Ideia: laranja p/ cadastro, azul p/ o resto */
+	/*background: orange;         /* Laranja */  
+        background: RGB(2, 130, 190); /*Azul BSGI */
+        
+        border-radius: 10px;
+	color: white; /* cor da letra */        
+	font-family: verdana;
+	font-size: 16pt;
+        font-weight: bold;
+
+        filter: drop-shadow(0 2px 2px rgb(200, 200, 200));
+        height: 8%;
+
+        line-height:55px; /* alinha o texto na vertical */
+	margin-left: 2px; /* margem externa */ 
+        margin-top:20px;
+        margin-bottom:20px;
+	padding-left:40px;
+        width: 70%;
+}
