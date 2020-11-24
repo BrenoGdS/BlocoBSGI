@@ -94,11 +94,11 @@ ALTER TABLE Tb_Lider_Organizacional ADD CONSTRAINT FK_Tb_Lider_Organizacional_2
     FOREIGN KEY (id_usuario)
     REFERENCES Tb_Usuario (id_usuario);
 
-/* 
+
 ALTER TABLE Tb_Usuario ADD CONSTRAINT FK_Tb_Usuario_2
     FOREIGN KEY (cod_tipo_sexo)
     REFERENCES tb_tipo_sexo (cod_tipo_sexo);
-*/
+
  
 ALTER TABLE Tb_Organizacao ADD CONSTRAINT FK_Tb_Organizacao_2
     FOREIGN KEY (id_tipo_org)
