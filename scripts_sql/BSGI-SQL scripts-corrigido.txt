@@ -1,10 +1,10 @@
 /* BSGI_2020-2_Logico_v2: */
-USE BLOCOBSGI;
+CREATE DATABASE BLOCOBSGI;
 
 CREATE TABLE Tb_Lider_Organizacional (
-    Id_Lider_Organizacional INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    Id_Organizacao INTEGER,
-    Id_Usuario INTEGER
+    id_lider_organizacional INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_organizacao INTEGER,
+    id_usuario INTEGER
 );
 
 CREATE TABLE Tb_Usuario (
@@ -71,33 +71,33 @@ CREATE TABLE Tb_UF (
 );
 
 CREATE TABLE Tb_Cidade (
-    id_cidade INT(4) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_cidade INT(4) PRIMARY KEY NOT NULL,
     id_UF CHAR(2),
     desc_cidade VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE Tb_Regiao (
-    id_regiao TINYINT(1) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_regiao TINYINT(1) PRIMARY KEY NOT NULL,
     desc_regiao VARCHAR(12) NOT NULL
 );
 
 CREATE TABLE tb_tipo_sexo (
     cod_tipo_sexo TINYINT(1) PRIMARY KEY NOT NULL,
-    desc_tipo_sexo VARCHAR(11) NOT NULL
+    desc_tipo_sexo VARCHAR(12) NOT NULL
 );
  
 ALTER TABLE Tb_Lider_Organizacional ADD CONSTRAINT FK_Tb_Lider_Organizacional_1
-    FOREIGN KEY (Id_Organizacao)
+    FOREIGN KEY (id_organizacao)
     REFERENCES Tb_Organizacao (id_organizacao);
  
 ALTER TABLE Tb_Lider_Organizacional ADD CONSTRAINT FK_Tb_Lider_Organizacional_2
-    FOREIGN KEY (Id_Usuario)
+    FOREIGN KEY (id_usuario)
     REFERENCES Tb_Usuario (id_usuario);
 
 /* 
 ALTER TABLE Tb_Usuario ADD CONSTRAINT FK_Tb_Usuario_2
     FOREIGN KEY (cod_tipo_sexo)
-    REFERENCES tb_tipo_sexo (???);
+    REFERENCES tb_tipo_sexo (cod_tipo_sexo);
 */
  
 ALTER TABLE Tb_Organizacao ADD CONSTRAINT FK_Tb_Organizacao_2
@@ -106,7 +106,7 @@ ALTER TABLE Tb_Organizacao ADD CONSTRAINT FK_Tb_Organizacao_2
  
 ALTER TABLE Tb_Organizacao ADD CONSTRAINT FK_Tb_Organizacao_3
     FOREIGN KEY (id_cidade_org)
-    REFERENCES Tb_Cidade (Id_Cidade);
+    REFERENCES Tb_Cidade (id_cidade);
  
 ALTER TABLE Tb_Organizacao ADD CONSTRAINT FK_Tb_Organizacao_4
     FOREIGN KEY (id_organizacao_pai)
@@ -119,14 +119,14 @@ ALTER TABLE Tb_Usuario_Organizacao ADD CONSTRAINT FK_Tb_Usuario_Organizacao_1
 ALTER TABLE Tb_Usuario_Organizacao ADD CONSTRAINT FK_Tb_Usuario_Organizacao_2
     FOREIGN KEY (id_usuario)
     REFERENCES Tb_Usuario (id_usuario);
- 
+
 ALTER TABLE Tb_Evento ADD CONSTRAINT FK_Tb_Evento_2
     FOREIGN KEY (id_tipo_evento)
     REFERENCES Tb_Tipo_Evento (id_tipo_evento);
  
 ALTER TABLE Tb_Evento ADD CONSTRAINT FK_Tb_Evento_3
     FOREIGN KEY (id_cidade_evento)
-    REFERENCES Tb_Cidade (Id_Cidade);
+    REFERENCES Tb_Cidade (id_cidade);
  
 ALTER TABLE Tb_Evento ADD CONSTRAINT FK_Tb_Evento_4
     FOREIGN KEY (id_organizacao)
@@ -137,5 +137,5 @@ ALTER TABLE Tb_UF ADD CONSTRAINT FK_Tb_UF_2
     REFERENCES Tb_Regiao (id_regiao);
  
 ALTER TABLE Tb_Cidade ADD CONSTRAINT FK_Tb_Cidade_2
-    FOREIGN KEY (Id_UF)
+    FOREIGN KEY (id_UF)
     REFERENCES Tb_UF (id_UF);
