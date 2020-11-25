@@ -230,7 +230,7 @@
                         
                 <div class="div-titulo-listagem-organizacao"> <p> <b> <i>Resultados Encontrados <i> <b></p> </div>            
                 
-                <div class="div-resultado-organizacao">                        
+               <!--  <div class="div-resultado-organizacao">                        
                     <div class="div-titulo-organizacao"> <center> <p> <b> <i>Bloco de Exemplo Um <i> <b></p> </center> </div>
                     <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
                                                                 - 01/10/2020 Atividade Exemplo 2 <br> 
@@ -255,7 +255,7 @@
                                                                 - 01/10/2020 Atividade Exemplo 3  <br> 
                                                                 + Clique aqui para detalhar <i> </p> 
                     </div>
-                </div>
+                </div> -->
 
             </div>
         
