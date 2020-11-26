@@ -14,17 +14,16 @@ $tipo = $_GET["tipo"];
 $tit = $_GET["tit"];
 $data = $_GET["data"];
 $cep = $_GET["cep"];
-
-
+$cidade = $_GET["cidade"];
 $logradouro = $_GET["logradouro"];
 $num = $_GET["num"];
 $complemento = $_GET["complemento"];
 $bairro = $_GET["bairro"];
-$cidade = $_GET["cidade"];
-$estado = $_GET["estado"];
+
+
 
   try {
-  include_once "../inc/conectabd.inc.php";
+  include_once "../inc/conectabd.php";
 
   $query = "UPDATE tb_evento 
   SET   id_evento = :evento,
@@ -32,14 +31,13 @@ $estado = $_GET["estado"];
         id_tipo_evento = :tipo,
 		titulo = :tit,
         data_evento = :data,
-        CEP_evento = :cep,   
+        CEP_evento = :cep, 
+		id_cidade_evento = :cidade,  
 		logradouro_evento = :logradouro,
         num_evento = :num,
 		complemento_evento = :complemento,
-		bairro_evento = :bairro,
-		id_cidade_evento = :cidade,
-		uf = :estado
-  WHERE id_evento = :evento;";
+		bairro_evento = :bairro	
+  WHERE id_evento = :id;";
     
   # echo $query.'<br>';
   $stmt = $conn->prepare($query);	
@@ -49,12 +47,13 @@ $estado = $_GET["estado"];
 	$stmt -> bindValue(":titulo",$tit, PDO::PARAM_STR);
 	$stmt -> bindValue(":data_evento",$data, PDO::PARAM_STR);
 	$stmt -> bindValue(":CEP_evento",$cep, PDO::PARAM_STR);
+	$stmt -> bindValue(":id_cidade_evento",$cidade, PDO::PARAM_STR);
 	$stmt -> bindValue(":logradouro_evento",$logradouro, PDO::PARAM_STR);
 	$stmt -> bindValue(":num_evento",$num, PDO::PARAM_STR);
 	$stmt -> bindValue(":complemento_evento",$complemento, PDO::PARAM_STR);
 	$stmt -> bindValue(":bairro_evento",$bairro, PDO::PARAM_STR);
-	$stmt -> bindValue(":id_cidade_evento",$cidade, PDO::PARAM_STR);
-	$stmt -> bindValue(":uf",$estado, PDO::PARAM_STR);
+	
+	
 	$stmt->bindValue(":evento", "evento", PDO::PARAM_INT); 
 
   $stmt->execute();

@@ -1,6 +1,6 @@
 
-	
-	<!HTML>
+
+<!HTML>
 
 <!-- modeloGeralTemplate.php
      Template do layout geral das páginas - RENOMEIE PARA O NOME DO ARQUIVO QUE VOCÊ FOR USAR
@@ -21,7 +21,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="consultaCEP.js"></script>    
 
-    <title> BSGI - Eventos Cadastrados </title>
+    <title> BSGI - Eventos </title>
 
     </head>
     
@@ -37,16 +37,16 @@
         <div id="cab_dir">
         <!-- novos icones azuis -->    
                 <a href="../user"><img src="..\img\ic-users-b2-128.png" height="10%" ></a>
-                <a href="../info"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
+                <a href="http://www.bsgi.org.br/quemsomos/historia_da_soka_gakkai_no_brasil/"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
                 <a href="https://www.instagram.com" target="_blank"><img src="..\img\ic-instagram-b2-128.png" height="8.1%" ></a>
                 <a href="https://www.facebook.com/" target="_blank"><img src="..\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="../home"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
+                <a href="http://localhost/cadastroEventos/eventos/index.php"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
         </div>
     </header>
     
     <section id="barra"> </section>
     <section id="main">
-        <h1 class="titulo">Eventos Cadastrados</h1>
+        <h1 class="titulo">Bloco de Eventos - BSGI</h1>
         
 
         <style>
@@ -133,97 +133,21 @@
         </div>    
         
         
-    <?php
-    //cadastro.php
-    // lista cursos cadastrados  
 
-	try{
-		include_once "../inc/conectabd.inc.php";
-
-		
-
-			// lista eventos já cadastrados
-			$query = "SELECT id_evento, id_organizacao, id_tipo_evento, titulo, data_evento, CEP_evento, logradouro_evento, num_evento, complemento_evento, bairro_evento, id_cidade_evento, uf FROM tb_evento;";
-			$stmt = $conn->prepare($query);
-			$stmt->execute();
-
-			echo "<table border='1'>";
-			echo "<tr>
-					<th>Id</th>
-					<th>Organizacao</th>
-					<th>Tipo Evento</th>
-					<th>Titulo</th>
-					<th>Data Evento</th>
-					<th>Cep</th>			
-					<th>Logradouro</th>
-					<th>Numero</th>
-					<th>Complemento</th>
-					<th>Bairro</th>
-					<th>Cidade</th>
-					<th>Estado</th>
-					
-					<th colspan=\"2\">Ações</th>
-				</tr>";
-			// busca os dados lidos do banco de dados
-			while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
-				$id_evento = $row["id_evento"];
-				$id_organizacao = $row["id_organizacao"];
-				$id_tipo_evento = $row["id_tipo_evento"];
-				$titulo = $row["titulo"];
-				$data_evento = $row["data_evento"];
-				$CEP_evento = $row["CEP_evento"];			
-				$logradouro_evento = $row["logradouro_evento"];
-				$num_evento = $row["num_evento"];
-				$complemento_evento = $row["complemento_evento"];
-				$bairro_evento = $row["bairro_evento"];	
-				$id_cidade_evento = $row["id_cidade_evento"];
-				$uf = $row["uf"];
-						
-				echo "<tr>";
-				echo      "<td> $id_evento </td>";
-				echo      "<td> $id_organizacao </td>";				
-				echo      "<td> $id_tipo_evento </td>";
-				echo      "<td> $titulo </td>";
-				echo      "<td> $data_evento </td>";
-				echo      "<td> $CEP_evento </td>";			
-				echo      "<td> $logradouro_evento </td>";
-				echo      "<td> $num_evento </td>";
-				echo      "<td> $complemento_evento </td>";
-				echo      "<td> $bairro_evento </td>";
-				echo      "<td> $id_cidade_evento </td>";
-				echo      "<td> $uf </td>";
-				
-				
-				// cria link para EXCLUSAO do respectivo id_curso
-				echo '<td><a href="exclusao.php?id='. $row["id_evento"] . '">Excluir</a></td>';
-				// cria link para ALTERACAO do respectivo id_curso
-				echo '<td><a href="form_alteracao.php?id='. $row["id_evento"] . '">Alterar</a></td>';
-				
-				echo "</tr>";
-			}
-			echo "</table>";
-		} catch(PDOExeception $e){
-			echo "Erro: ".$e -> getMessage();
-		}  
-?>  
         
-        
-        
-
+   
     </form>
-        
-
-<br>
-<br>
-
-	<a href="form_insercao.php">
+        <br>
+		<br>
+     
+	<a href="eventosCadastrados.php">
 	<button style="background: #4CAF50	; border-radius: 6px; 
-	padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Cadastrar novo Evento</button></a>
-	
-	<a href="index.php">
-	<button style="background: #FF0000	; border-radius: 6px; 
-	padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar ao início</button></a>
-	
+	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Listar Eventos</button></a>
+ 
+
+
+ 
+
 	
 	</body>
 </html>

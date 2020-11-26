@@ -1,4 +1,6 @@
-<!HTML>
+
+ 
+ <!HTML>
 
 <!-- modeloGeralTemplate.php
      Template do layout geral das páginas - RENOMEIE PARA O NOME DO ARQUIVO QUE VOCÊ FOR USAR
@@ -6,24 +8,18 @@
 
 <html lang="pt-br">
     <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    
+    <link href="..\css\estilos.css" rel="stylesheet">
+    
     <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
-
-    <!-- Link estilos-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="..\css\estilos.css" rel="stylesheet">
-
-    <!--CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="consultaCEP.js"></script>    
 
     <title> BSGI - Eventos </title>
 
@@ -41,19 +37,18 @@
         <div id="cab_dir">
         <!-- novos icones azuis -->    
                 <a href="../user"><img src="..\img\ic-users-b2-128.png" height="10%" ></a>
-                <a href="../info"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
+                <a href="http://www.bsgi.org.br/quemsomos/historia_da_soka_gakkai_no_brasil/"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
                 <a href="https://www.instagram.com" target="_blank"><img src="..\img\ic-instagram-b2-128.png" height="8.1%" ></a>
                 <a href="https://www.facebook.com/" target="_blank"><img src="..\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="../home"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
+                <a href="http://localhost/cadastroEventos/eventos/index.php"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
         </div>
     </header>
     
     <section id="barra"> </section>
     <section id="main">
-        <h1 class="titulo">Alteração de Eventos</h1>
+        <h1 class="titulo">Cadastro de eventos - Exclusão</h1>
         
-    <!-- *** FORMULÁRIO PARA INSERÇÃO DE DADOS *** -->
-  <!--  <form id="formulario" action="insercao_organizacao-v1.4.php" method="GET">-->
+
         <style>
             input[type=text], select, textarea {
                 width: 100%; 
@@ -88,7 +83,7 @@
             /* botão de salvar */
             /* Se não precisar do botão, retirar essa parte */
             input[type=submit] {
-                background-color: #FF0000	;
+                background-color: #4CAF50;
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -137,88 +132,37 @@
             
         </div>    
         
- 
-    
+        
     <?php
-  include "../inc/conectabd.inc.php";
-  include "../inc/funcoes.inc.php";
+//exclusao.php
+// efetua a exclusão do curso cujo id seja informado.
   $id = $_GET["id"];
-  $linha = le_eventos($conn, $id);
-?>
-		<form action="alteracao.php" method="GET" style="margin: 6%">
-		<div class="row">				
-	
-			
-		<div class="col-sm-2">
-          <label for="id_evento">Id </label>
-          <input type="number" class="form-control" name="evento" id="evento" value="<?php echo $linha["id_evento"];?>"><br>
-        </div>
-
-		<div class="col-sm-2">
-          <label for="id_organizacao">Organização</label>
-          <input type="number" class="form-control" name="organizacao" id="organizacao" value="<?php echo $linha["id_organizacao"];?>"><br>
-          </div>		
-
-
-		   <div class="col-sm-2">
-           <label for="id_tipo_evento">Tipo de Evento</label>
-           <input type="number" class="form-control" name="tipo" id="tipo" value="<?php echo $linha["id_tipo_evento"];?>"><br>
-           </div>
-
-
-		  <div class="col-sm-2">
-          <label for="titulo">Titulo</label>
-          <input type="text" class="form-control" name="tit" id="tit"  value="<?php echo $linha["titulo"];?>"><br>
-          </div>
-
-		  <div class="col-sm-3">
-          <label for="data_evento">Data do Evento</label>
-          <input type="date" class="form-control" name="data" id="data" value="<?php echo $linha["data_evento"];?>"><br>
-           </div>
-			
-			<div class="col-sm-3">
-            <label for="CEP_evento">CEP</label>
-			<input type="number" class="form-control" name="cep" id="cep" value="<?php echo $linha["CEP_evento"];?>"><br>
-			</div>     
-			 
-          <div class="col-sm-4">
-          <label for="logradouro_evento">Endereço</label>
-          <input type="text" class="form-control" name="logradouro" id="logradouro" value="<?php echo $linha["logradouro_evento"];?>"><br>
-          </div>
-
-
-
-		  <div class="col-sm-1">
-          <label for="num_evento">Nº</label>
-          <input type="number" class="form-control" name="num" id="num" value="<?php echo $linha["num_evento"];?>"><br>
-          </div>
-
-
-		  <div class="col-sm-4">
-          <label for="complemento_evento">Complemento</label>
-          <input type="text" class="form-control" name="complemento" id="complemento" value="<?php echo $linha["complemento_evento"];?>"><br>
-          </div>
-          </div>
-
-		  <div class="row">
-          <div class="col-sm-4">
-          <label for="bairro_evento">Bairro</label>
-          <input type="text" class="form-control" name="bairro" id="bairro" value="<?php echo $linha["bairro_evento"];?>"><br>          
-          </div>
-
-          <div class="col-sm-4">
-          <label for=id_cidade_evento>Cidade</label>
-          <input type="text" class="form-control" name="cidade" id="cidade" value="<?php echo $linha["id_cidade_evento"];?>"><br>
-		  </div>	  
-			
-
-		  <div class="col-sm-1">
-          <label for=uf>Estado</label>
-          <input type="text" class="form-control" name="estado" id="estado"value="<?php echo $linha["uf"];?>"><br>
-          </div>
-          </div>
-		  <input type="submit" value="Alterar" class="btn btn-primary btn-sm">
-          
-		</form>
-	</body>
+  
+  try{
+    include_once "../inc/conectabd.php";
+  
+    $query = "delete from tb_evento where id_evento=:id;";
+    $stmt=$conn->prepare($query);
+    $stmt->bindValue(":id", "$id", PDO::PARAM_INT);
+    $stmt->execute();
+     
+    
+    echo "<h1>Exclusão efetuada com sucesso</h1>";
+  } catch(PDOExeception $e){
+      echo "Erro: ".$e -> getMessage();
+  }  
+    
+ ?>     
+         
+        
+   
+    </form>
+        <br>
+		<br>
+     
+	<a href="eventosCadastrados.php">
+	<button style="background: #FF0000	; border-radius: 6px; 
+	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Ver eventos cadastrados</button></a>
+ 
+ </body>
 </html>

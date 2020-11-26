@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+   <!-- <script src="script.js"></script> -->
 
     <!-- Link estilos-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -41,16 +41,16 @@
         <div id="cab_dir">
         <!-- novos icones azuis -->    
                 <a href="../user"><img src="..\img\ic-users-b2-128.png" height="10%" ></a>
-                <a href="../info"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
+                <a href="http://www.bsgi.org.br/quemsomos/historia_da_soka_gakkai_no_brasil/"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
                 <a href="https://www.instagram.com" target="_blank"><img src="..\img\ic-instagram-b2-128.png" height="8.1%" ></a>
                 <a href="https://www.facebook.com/" target="_blank"><img src="..\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="../home"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
+                <a href="http://localhost/cadastroEventos/eventos/index.php"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
         </div>
     </header>
     
     <section id="barra"> </section>
     <section id="main">
-        <h1 class="titulo">Cadastro de Eventos</h1>
+        <h1 class="titulo">Alteração de Eventos</h1>
         
     <!-- *** FORMULÁRIO PARA INSERÇÃO DE DADOS *** -->
   <!--  <form id="formulario" action="insercao_organizacao-v1.4.php" method="GET">-->
@@ -71,7 +71,7 @@
             
             /* botão de limpar  */
             /* Se não precisar do botão, retirar essa parte */
-            input[type=reset] {
+            input[type=submit] {
                 background-color: red;  /* era #4CAF50 */
                 color: white;
                 padding: 12px 20px;
@@ -82,7 +82,7 @@
                 float: right;
                 margin-right: 1%;
             }
-            input[type=reset]:hover {
+            input[type=submit]:hover {
                 background-color: rgb(220,0,0); /* era #45a049 - ACERTAR COR EM HOVER */
             }            
             /* botão de salvar */
@@ -137,85 +137,85 @@
             
         </div>    
         
-        
+    
     <?php
-        # cria conexão com banco de dados
-        include_once "../inc/conectabd.php"; // ativar o database
-        
-        ?>
-         <form action="insercao.php"  method="GET" style="margin: 6%">
-      <div class="row">
-        <div class="col-sm-2">
+  include_once "../inc/conectabd.php";
+  include "../inc/funcoes_eventos.inc.php";
+  $id = $_GET["id"];
+  $linha = le_eventos($conn, $id);
+?>
+		<form action="alteracao.php" method="GET" style="margin: 6%">
+		<div class="row">				
+	
+			
+		<div class="col-sm-2">
           <label for="id_evento">Id </label>
-          <input type="number" class="form-control" name="evento" id="evento"><br>
+          <input type="number" class="form-control" name="evento" id="evento" value="<?php echo $linha["id_evento"];?>"><br>
         </div>
 
-        <div class="col-sm-2">
+		<div class="col-sm-2">
           <label for="id_organizacao">Organização</label>
-          <input type="number" class="form-control" name="organizacao" id="organizacao"><br>
-        </div>
-
-        <div class="col-sm-2">
-          <label for="id_tipo_evento">Tipo de Evento</label>
-          <input type="number" class="form-control" name="tipo" id="tipo"><br>
-        </div>
+          <input type="number" class="form-control" name="organizacao" id="organizacao" value="<?php echo $linha["id_organizacao"];?>"><br>
+          </div>		
 
 
-        <div class="col-sm-2">
+		   <div class="col-sm-2">
+           <label for="id_tipo_evento">Tipo de Evento</label>
+           <input type="number" class="form-control" name="tipo" id="tipo" value="<?php echo $linha["id_tipo_evento"];?>"><br>
+           </div>
+
+
+		  <div class="col-sm-2">
           <label for="titulo">Titulo</label>
-          <input type="text" class="form-control" name="tit" id="tit"><br>
-        </div>
+          <input type="text" class="form-control" name="tit" id="tit"  value="<?php echo $linha["titulo"];?>"><br>
+          </div>
 
-        <div class="col-sm-3">
+		  <div class="col-sm-3">
           <label for="data_evento">Data do Evento</label>
-          <input type="date" class="form-control" name="data" id="data"><br>
-        </div>
-        
-
-        <div class="col-sm-3">
-          <label for="CEP_evento">CEP</label>
-          <input type="number" class="form-control" name="cep" id="cep"><br>
-        </div>
-
-        <div class="row">
-
-        <div class="col-sm-5">
-          <label for="logradouro_evento">Endereço</label>
-          <input type="text" class="form-control" name="logradouro" id="logradouro"><br>
-        </div>
-
-        <div class="col-sm-2">
-          <label for="num_evento">Nº</label>
-          <input type="number" class="form-control" name="num" id="num"><br>
-        </div>
-
-        <div class="col-sm-5">
-          <label for="complemento_evento">Complemento</label>
-          <input type="text" class="form-control" name="complemento" id="complemento"><br>
-        </div>
-      </div>
-
-      
-        <div class="col-sm-3">
-          <label for="bairro_evento">Bairro</label>
-          <input type="text" class="form-control" name="bairro" id="bairro"><br>
-        </div>
-
-        <div class="col-sm-2">
+          <input type="date" class="form-control" name="data" id="data" value="<?php echo $linha["data_evento"];?>"><br>
+           </div>
+			
+			<div class="col-sm-3">
+            <label for="CEP_evento">CEP</label>
+			<input type="number" class="form-control" name="cep" id="cep" value="<?php echo $linha["CEP_evento"];?>"><br>
+            </div>  
+            <div class="col-sm-4">
           <label for=id_cidade_evento>Cidade</label>
-          <input type="text" class="form-control" name="cidade" id="cidade"><br>
-        </div>
+          <input type="text" class="form-control" name="cidade" id="cidade" value="<?php echo $linha["id_cidade_evento"];?>"><br>
+		  </div>	     
+			 
+          <div class="col-sm-4">
+          <label for="logradouro_evento">Endereço</label>
+          <input type="text" class="form-control" name="logradouro" id="logradouro" value="<?php echo $linha["logradouro_evento"];?>"><br>
+          </div>
 
-        <div class="col-sm-1">
-          <label for=uf>Estado</label>
-          <input type="text" class="form-control" name="estado" id="estado"><br>
+
+
+		  <div class="col-sm-1">
+          <label for="num_evento">Nº</label>
+          <input type="number" class="form-control" name="num" id="num" value="<?php echo $linha["num_evento"];?>"><br>
+          </div>
+
+
+		  <div class="col-sm-4">
+          <label for="complemento_evento">Complemento</label>
+          <input type="text" class="form-control" name="complemento" id="complemento" value="<?php echo $linha["complemento_evento"];?>"><br>
+          </div>
+          
+
+	
+          <div class="col-sm-4">
+          <label for="bairro_evento">Bairro</label>
+          <input type="text" class="form-control" name="bairro" id="bairro" value="<?php echo $linha["bairro_evento"];?>"><br>          
+          </div>
         </div>
-      </div>
-        
-    <!-- Se não precisar do botão, retirar essa parte -->
-    <input type="submit" value="Cadastrar" class="btn btn-primary btn-sm">
-    <input type="reset" value="Limpar" class="btn btn-primary btn-sm">
-    </form>
-        
-</body>
+          
+        <input type="submit" value="Alterar" class="btn btn-primary btn-sm">
+
+  
+             
+          
+        </form>
+
+	</body>
 </html>
