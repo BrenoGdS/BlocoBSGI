@@ -137,7 +137,7 @@
                         <label class="label-index" for="dataEvento">
                         Data da Atividade/Evento:
                         </label>
-                        <input type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                        <input  type="datetime-local" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                             name="dataCalendario" value="" required>
 
                         <button type="button" class="btn btn-primary btnPesquisarOrg" onclick="teste();">Pesquisar</button>

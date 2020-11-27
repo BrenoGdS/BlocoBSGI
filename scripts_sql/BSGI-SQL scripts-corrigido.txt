@@ -35,7 +35,7 @@ CREATE TABLE Tb_Organizacao (
 );
 
 CREATE TABLE Tb_Tipo_Organizacao (
-    id_tipo_org TINYINT(2) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_tipo_org TINYINT(2) PRIMARY KEY NOT NULL,
     desc_tipo_org VARCHAR(30) NOT NULL
 );
 
@@ -46,11 +46,11 @@ CREATE TABLE Tb_Usuario_Organizacao (
 );
 
 CREATE TABLE Tb_Evento (
-    id_evento VARCHAR(30) PRIMARY KEY NOT NULL,
+    id_evento INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
     id_organizacao INTEGER NOT NULL,
     id_tipo_evento TINYINT(2) NOT NULL,
     titulo VARCHAR(60) NOT NULL,
-    data_evento DATE NOT NULL,
+    data_evento DATETIME NOT NULL,
     CEP_evento INTEGER(8) ZEROFILL,
     id_cidade_evento INT(4),
     logradouro_evento VARCHAR(60),
@@ -60,7 +60,7 @@ CREATE TABLE Tb_Evento (
 );
 
 CREATE TABLE Tb_Tipo_Evento (
-    id_tipo_evento TINYINT(2) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    id_tipo_evento TINYINT(2) PRIMARY KEY NOT NULL,
     desc_tipo_evento VARCHAR(60) NOT NULL
 );
 
