@@ -95,6 +95,7 @@ a:hover{
 	line-height:30px; /* alinha o texto na vertical */
         padding-left: 15px;
         width: auto;
+
 }
 
 /* Divs p/ organizar formulários */
@@ -102,20 +103,23 @@ a:hover{
 #divFormOrg1{
     /* float: center; */
     /* Para 2 colunas col-50 lado a lado centralizadas */
-    margin-left:19%; /* margem externa (centraliza na página) - estava 11% */
+    /* margin-left:19%; /* margem externa (centraliza na página) - estava 19% para col-25=20% */
+    margin-left:17.5%; /* margem externa (centraliza na página) - col-25=21.5% */
     
 }
 #divFormOrg2{
     /* float: center; */
     /* Para 2 colunas col-50 lado a lado centralizadas */
-    margin-left:19%; /* margem externa (centraliza na página) - estava 11% */
+    /* margin-left:19%; /* margem externa (centraliza na página) - estava 19% para col-25=20% */
+    margin-left:17.5%; /* margem externa (centraliza na página) - col-25=21.5% */
 
     
 }
 #divFormOrg3{
     /* float: center; */
     /* Para 2 colunas col-50 lado a lado centralizadas */
-    margin-left:19%; /* margem externa (centraliza na página) - estava 11% */
+    /* margin-left:19%; /* margem externa (centraliza na página) - estava 19% para col-25=20% */
+    margin-left:17.5%; /* margem externa (centraliza na página) - col-25=21.5% */
 
     
 }
@@ -155,70 +159,4 @@ a:hover{
         margin-bottom:20px;
 	padding-left:40px;
         width: 70%;
-}
-
-.div-filtros-Consulta-Organizacao{
-        padding-left: 20%;
-        float: left;
-}
-
-.btnPesquisarOrg{
-        margin-top: 15px;
-        width: 100%;
-}
-
-.imput-index{
-        height: 45px;
-}
-
-.div-listagem-organizacao{
-        overflow:auto;
-        margin-top: 15px;
-        margin-bottom: 30px;
-        width: 70%;
-        border-radius: 15px;
-        background-color: rgba(0, 205, 174, 0.637);
-        height: 460px;
-}
-
-.div-titulo-listagem-organizacao{
-        font-size: 25px;
-        color: white;
-        text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.76);
-        margin-left: 30px;
-        margin-right: 30px;
-        padding-top: 10px;
-        text-align: center;
-        border-width: 0px;
-        border-bottom-width: 1px;
-        border-style: solid;
-        border-bottom-color: rgb(255, 255, 255);
-}
-
-.div-resultado-organizacao{
-}
-
-.div-titulo-organizacao{
-        font-size: 25px;
-        font-family: calibri;
-        color: white;
-        text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.76);
-        margin-left: 20%;
-        margin-right: 20%;
-        margin-bottom: 15px;
-        padding-top: 10px;
-        text-align: center;
-}
-
-.div-eventos-organizacao{
-        color: white;
-        text-shadow: 0px 4px 8px rgba(0, 0, 0, 0.644);
-        margin-left: 11%;
-        margin-right: 11%;
-        margin-bottom: 20px;
-        text-align: left;
-        border-width: 0px;
-        border-top-width: 1px;
-        border-style: solid;
-        border-top-color: rgb(255, 255, 255);
 }
