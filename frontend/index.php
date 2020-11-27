@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
     
-    <link href="src\css\estilos.css" rel="stylesheet">
+    <link href="src\css\estiloIndex.css" rel="stylesheet">
     
     <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -48,7 +48,7 @@
         <h1 class="titulo">Preencha a baixo ao menos um dos campos para busca</h1>
         
         <!-- *** FORMULÁRIO PARA INSERÇÃO DE DADOS *** -->
-        <form id="formulario" action="insercao_organizacao-v1.4.php" method="GET">
+        <form id="formulario" name="formularioFiltroOrganizacao" action="insercao_organizacao-v1.4.php" method="GET">
             <style>
                 input[type=text], select, textarea {
                     width: 100%; 
@@ -135,9 +135,9 @@
                         <input class="imput-index" type="text" name="nomeAtividade">
                 
                         <label class="label-index" for="dataEvento">
-                        Data da Atividade/Evento:
+                        Mês da Atividade/Evento:
                         </label>
-                        <input  type="datetime-local" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                        <input  type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                             name="dataCalendario" value="" required>
 
                         <button type="button" class="btn btn-primary btnPesquisarOrg" onclick="teste();">Pesquisar</button>
@@ -150,8 +150,8 @@
                     <div class="div-filtros-Consulta-Organizacao" >
 
                     
-                        <label class="label-index" for="regiao">
-                        regiao:
+                        <label class="label-index" for="estado">
+                        Estado:
                         </label>
                         <?php //cadastro.php
                         // lista Alunos cadastrados  
@@ -160,7 +160,8 @@
                             $query = "SELECT id_UF, nome_UF FROM tb_uf;";
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
-                            echo "<select name=\"regiao\">";
+                            echo "<select name=\"estado\">";
+                            echo '<option default value="">SELECIONE</option>';
                             // busca os dados lidos do banco de dados
                             while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
                                 $id = $row["id_UF"];
@@ -176,7 +177,7 @@
                         ?> 
 
                         <label class="label-index" for="cidade">
-                        cidade:
+                        Cidade:
                         </label>
                         <?php //cadastro.php
                         // lista Alunos cadastrados  
@@ -186,6 +187,7 @@
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
                             echo "<select name=\"cidade\">";
+                            echo '<option default value="">SELECIONE</option>';
                             // busca os dados lidos do banco de dados
                             while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
                                 $id = $row["id_cidade"];
@@ -208,16 +210,6 @@
                     </div>    
                 </div>
             </div>
-                
-            <?php
-                # cria conexão com banco de dados
-                include_once "src/inc/conectabd.php"; // ativar o database
-
-                                
-                function teste(){  
-                    echo "ErroErroErroErroErroErroErroErroErro: ";
-                }
-            ?>
             
             <!-- Se não precisar do botão, retirar essa parte -->
             <!-- <input type="submit" value="Cadastrar" class="btn btn-primary btn-sm">
@@ -230,32 +222,47 @@
                         
                 <div class="div-titulo-listagem-organizacao"> <p> <b> <i>Resultados Encontrados <i> <b></p> </div>            
                 
-               <!--  <div class="div-resultado-organizacao">                        
-                    <div class="div-titulo-organizacao"> <center> <p> <b> <i>Bloco de Exemplo Um <i> <b></p> </center> </div>
-                    <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
-                                                                - 01/10/2020 Atividade Exemplo 2 <br> 
-                                                                - 01/10/2020 Atividade Exemplo 3  <br> 
-                                                                + Clique aqui para detalhar <i> </p> 
+                <div>
+                    <div class="div-titulo-organizacao"> <center> <p> <b> <i>id_tipo_org nome_org <i> <b></p> </center> </div>
+                    
+                    <div class="div-resultado-organizacao">  
+                        <div class="div-titulo-organizacao"> <center> <p> <b> <i>Informações <i> <b></p> </center> </div>                      
+                        <div class="div-eventos-organizacao"> <p> <i> Endereço: Estado, Cidade, Logradouro, Nº, compl., bairro <br> 
+                                                                    Telefones: 123456798 - 123456798 <br> 
+                                                                    Email: email@gmail.com <i> </p> 
+                        </div>
+                    </div>
+                    
+                    <div class="div-resultado-organizacao">                        
+                        <div class="div-titulo-organizacao"> <center> <p> <b> <i>Programação <i> <b></p> </center> </div>
+                        <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
+                                                                    - 01/10/2020 Atividade Exemplo 2 <br> 
+                                                                    - 01/10/2020 Atividade Exemplo 3  <br> 
+                                                                    + Clique aqui para detalhar <i> </p> 
+                        </div>
                     </div>
                 </div>
                 
-                <div class="div-resultado-organizacao">                        
-                    <div class="div-titulo-organizacao"> <center> <p> <b> <i>Bloco de Exemplo Um <i> <b></p> </center> </div>
-                    <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
-                                                                - 01/10/2020 Atividade Exemplo 2 <br> 
-                                                                - 01/10/2020 Atividade Exemplo 3  <br> 
-                                                                + Clique aqui para detalhar <i> </p> 
+                <div>
+                    <div class="div-titulo-organizacao"> <center> <p> <b> <i>id_tipo_org nome_org <i> <b></p> </center> </div>
+                    
+                    <div class="div-resultado-organizacao">  
+                        <div class="div-titulo-organizacao"> <center> <p> <b> <i>Informações <i> <b></p> </center> </div>                      
+                        <div class="div-eventos-organizacao"> <p> <i> Endereço: Estado, Cidade, Logradouro, Nº, compl., bairro <br> 
+                                                                    Telefones: 123456798 - 123456798 <br> 
+                                                                    Email: email@gmail.com <i> </p> 
+                        </div>
+                    </div>
+                    
+                    <div class="div-resultado-organizacao">                        
+                        <div class="div-titulo-organizacao"> <center> <p> <b> <i>Programação <i> <b></p> </center> </div>
+                        <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
+                                                                    - 01/10/2020 Atividade Exemplo 2 <br> 
+                                                                    - 01/10/2020 Atividade Exemplo 3  <br> 
+                                                                    + Clique aqui para detalhar <i> </p> 
+                        </div>
                     </div>
                 </div>
-                
-                <div class="div-resultado-organizacao">                        
-                    <div class="div-titulo-organizacao"> <center> <p> <b> <i>Bloco de Exemplo Um <i> <b></p> </center> </div>
-                    <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
-                                                                - 01/10/2020 Atividade Exemplo 2 <br> 
-                                                                - 01/10/2020 Atividade Exemplo 3  <br> 
-                                                                + Clique aqui para detalhar <i> </p> 
-                    </div>
-                </div> -->
 
             </div>
         
@@ -268,13 +275,24 @@
 
 <script>
   function teste() {
+
+	let form = document.formularioFiltroOrganizacao;
+    console.log(form.nomeOrganizacao.value);
+
+    let nomeOrganizacao = form.nomeOrganizacao ? form.nomeOrganizacao.value : "";
+    let nomeAtividade = form.nomeAtividade ? form.nomeAtividade.value : "";
+    let dataCalendario = form.dataCalendario.value;
+    let estado = form.estado ? form.estado.value : "";
+    let cidade = form.cidade ? form.cidade.value : "";
+    let nomeendereco = form.nomeendereco ? form.nomeendereco.value : "";
+
     var xmlhttp=new XMLHttpRequest();
     xmlhttp.onreadystatechange=function() {
       if (this.readyState==4 && this.status==200) {
         document.getElementById("div-resultado-listagem-organizacao").innerHTML=this.responseText;
       }
     }
-    xmlhttp.open("GET","funcoesOrganizacao.php?uf="+'str',true);
+    xmlhttp.open("GET","funcoesOrganizacao.php?nomeOrganizacao="+nomeOrganizacao+"&nomeAtividade="+nomeAtividade+"&dataCalendario="+dataCalendario+"&estado="+estado+"&cidade="+cidade+"&nomeendereco="+nomeendereco,true);
     xmlhttp.send(); 
   }
 </script>
