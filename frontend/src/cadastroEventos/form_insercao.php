@@ -145,30 +145,71 @@
         ?>
          <form action="insercao.php"  method="GET" style="margin: 6%">
       <div class="row">
-        <div class="col-sm-2">
-          <label for="id_evento">Id </label>
-          <input type="number" class="form-control" name="evento" id="evento"><br>
+
+
+        <div class="col-sm-3">
+        <label class="label-index" for="organizacao" id="organizacao">
+                        Organizacao:
+                        </label>
+                        <?php  
+                        try{
+                          include_once "../inc/conectabd.php";
+                            $query = "SELECT id_tipo_org , desc_tipo_org FROM tb_tipo_organizacao;";
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                            echo "<select name=\"organizacao\">";
+                            echo '<option default value="">SELECIONE</option>';
+                            // busca os dados lidos do banco de dados
+                            while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
+                                $id = $row["id_tipo_org"];
+                                $curso = $row["desc_tipo_org"];
+                                        // <option value="1">Anal. Des. Sist</option> 
+                                echo "<option value=\"$id\">";
+                                echo  $curso . '</option>';
+                            }
+                            echo "</select>";
+                        } catch(PDOExeception $e){
+                            echo "Erro: ".$e -> getMessage();
+                        }  
+                        ?>
         </div>
 
-        <div class="col-sm-2">
-          <label for="id_organizacao">Organização</label>
-          <input type="number" class="form-control" name="organizacao" id="organizacao"><br>
+        <div class="col-sm-3">
+        <label class="label-index" for="tipo" id="tipo">
+                        Tipo de Evento:
+                        </label>
+                        <?php  
+                        try{
+                          include_once "../inc/conectabd.php";
+                            $query = "SELECT id_tipo_evento , desc_tipo_evento FROM tb_tipo_evento;";
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                            echo "<select name=\"tipo\">";
+                            echo '<option default value="">SELECIONE</option>';
+                            // busca os dados lidos do banco de dados
+                            while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
+                                $id = $row["id_tipo_evento"];
+                                $curso = $row["desc_tipo_evento"];
+                                        // <option value="1">Anal. Des. Sist</option> 
+                                echo "<option value=\"$id\">";
+                                echo  $curso . '</option>';
+                            }
+                            echo "</select>";
+                        } catch(PDOExeception $e){
+                            echo "Erro: ".$e -> getMessage();
+                        }  
+                        ?>
         </div>
 
-        <div class="col-sm-2">
-          <label for="id_tipo_evento">Tipo de Evento</label>
-          <input type="number" class="form-control" name="tipo" id="tipo"><br>
-        </div>
 
-
-        <div class="col-sm-2">
+        <div class="col-sm-3">
           <label for="titulo">Titulo</label>
           <input type="text" class="form-control" name="tit" id="tit"><br>
         </div>
 
         <div class="col-sm-3">
           <label for="data_evento">Data do Evento</label>
-          <input type="date" class="form-control" name="data" id="data"><br>
+          <input type="datetime-local" class="form-control" name="data" id="data"><br>
         </div>
         
 
@@ -180,8 +221,31 @@
        
 
         <div class="col-sm-3">
-          <label for=id_cidade_evento>Cidade</label>
-          <input type="number" class="form-control" name="cidade" id="cidade"><br>
+        <label class="label-index" for="cidade" id="cidade">
+                        Cidade:
+                        </label>
+                        <?php //cadastro.php
+                        // lista Alunos cadastrados  
+                        try{
+                          include_once "../inc/conectabd.php";
+                            $query = "SELECT id_cidade, desc_Cidade FROM tb_cidade;";
+                            $stmt = $conn->prepare($query);
+                            $stmt->execute();
+                            echo "<select name=\"cidade\">";
+                            echo '<option default value="">SELECIONE</option>';
+                            // busca os dados lidos do banco de dados
+                            while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
+                                $id = $row["id_cidade"];
+                                $curso = $row["desc_Cidade"];
+                                        // <option value="1">Anal. Des. Sist</option> 
+                                echo "<option value=\"$id\">";
+                                echo  $curso . '</option>';
+                            }
+                            echo "</select>";
+                        } catch(PDOExeception $e){
+                            echo "Erro: ".$e -> getMessage();
+                        }  
+                        ?>
         </div>
 
         <div class="col-sm-4">

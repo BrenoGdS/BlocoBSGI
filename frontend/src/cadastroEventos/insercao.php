@@ -136,7 +136,7 @@
     <?php
 // efetua inclusao do curso informado em cadatro_curso.html
 
-  $evento = $_GET["evento"];
+  
   $organizacao = $_GET["organizacao"];
   $tipo = $_GET["tipo"];
   $tit = $_GET["tit"];
@@ -157,11 +157,11 @@
   
 
   $query = "INSERT INTO tb_evento 
-      (id_evento, id_organizacao, id_tipo_evento, titulo, data_evento, CEP_evento, id_cidade_evento,  
+      (id_organizacao, id_tipo_evento, titulo, data_evento, CEP_evento, id_cidade_evento,  
 	  logradouro_evento, num_evento, complemento_evento, bairro_evento) 
-	  values (:id_evento, :id_organizacao, :id_tipo_evento, :titulo, :data_evento, :CEP_evento, :id_cidade_evento, :logradouro_evento, :num_evento, :complemento_evento, :bairro_evento);";
+	  values (:id_organizacao, :id_tipo_evento, :titulo, :data_evento, :CEP_evento, :id_cidade_evento, :logradouro_evento, :num_evento, :complemento_evento, :bairro_evento);";
 	$stmt = $conn -> prepare($query);
-	$stmt -> bindValue(":id_evento",$evento, PDO::PARAM_STR);
+	
 	$stmt -> bindValue(":id_organizacao",$organizacao, PDO::PARAM_INT);
 	$stmt -> bindValue(":id_tipo_evento",$tipo, PDO::PARAM_STR);
 	$stmt -> bindValue(":titulo",$tit, PDO::PARAM_STR);

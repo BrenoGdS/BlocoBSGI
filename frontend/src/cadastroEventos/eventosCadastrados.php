@@ -143,7 +143,8 @@
 		
 
 			// lista eventos já cadastrados
-			$query = "SELECT id_evento, id_organizacao, id_tipo_evento, titulo, date_format(data_evento,'%d-%m-%Y') as data_evento, CEP_evento, id_cidade_evento, logradouro_evento, num_evento, complemento_evento, bairro_evento FROM tb_evento;";
+			$query = "SELECT id_evento, id_organizacao, id_tipo_evento, titulo, date_format(data_evento,'%d/%c/%Y %Hh') as 
+            data_evento, CEP_evento, id_cidade_evento, logradouro_evento, num_evento, complemento_evento, bairro_evento FROM tb_evento;";
 			$stmt = $conn->prepare($query);
 			$stmt->execute();
 
