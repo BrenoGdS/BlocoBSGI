@@ -62,7 +62,7 @@
                 $desc_tipo_org = $row["desc_tipo_org"];
 
                 echo '<div>
-                    <div class="div-titulo-organizacao"> <center> <p> <b> <i> <a href="src/corrigir-este-caminho-rodrigo/form_alteracao.php?id='.$id_organizacao.'" class="linksCrudOrg"><img class="btn-editar" src="src/img/btn-lapis-editar.png" alt="..."  ></a> <a href="src/corrigir-este-caminho-rodrigo/exclusao.php?id='.$id_organizacao.'" class="linksCrudOrg"><img class="btn-editar" src="src/img/img-excluir.png" alt="..." ></a>' .$desc_tipo_org. ' ' .$nome_org . '</i> <b></p> </center> </div>
+                    <div class="div-titulo-organizacao"> <center> <p> <b> <i> <a href="src/organizacao/form_alteracao_org.php?id='.$id_organizacao.'" class="linksCrudOrg"><img class="btn-editar" src="src/img/btn-lapis-editar.png" alt="..."  ></a> <a href="src/organizacao/exclui_org.php?id='.$id_organizacao.'" class="linksCrudOrg"><img class="btn-editar" src="src/img/img-excluir.png" alt="..." ></a>' .$desc_tipo_org. ' ' .$nome_org . '</i> <b></p> </center> </div>
                         <div class="div-resultado-organizacao">
                             <div class="div-titulo-organizacao"> <center> <p> <b> <i>Informações </i> <b></p> </center> </div>
                             <div class="div-eventos-organizacao"> <p> <i> '.$desc_cidade_Org.' - ' .$nome_UF_Org. ', ' .$logradouro_org. ', '.$num_org.', '.$complemento_org.', '.$bairro_org.' <br>
