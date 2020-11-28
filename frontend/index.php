@@ -35,11 +35,11 @@
         </div> -->
         <div id="cab_dir">
         <!-- novos icones azuis -->    
-                <a href="../user"><img src="src\img\ic-users-b2-128.png" height="10%" ></a>
-                <a href="../info"><img src="src\img\ic-information-b2-128.png" height="9%" ></a>
+                <a href="src/perfil/form_lista_perfil.php"><img src="src\img\ic-users-b2-128.png" height="10%" ></a>
+                <a href="http://www.bsgi.org.br/quemsomos/historia_da_soka_gakkai_no_brasil/"><img src="src\img\ic-information-b2-128.png" height="9%" ></a>
                 <a href="https://www.instagram.com" target="_blank"><img src="src\img\ic-instagram-b2-128.png" height="8.1%" ></a>
                 <a href="https://www.facebook.com/" target="_blank"><img src="src\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="../home"><img src="src\img\ic-home-b2-128.png" height="9%"></a>
+                <a href="index.php"><img src="src\img\ic-home-b2-128.png" height="9%"></a>
         </div>
     </header>
     
@@ -140,7 +140,7 @@
                         <input  type="date" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                             name="dataCalendario" value="" required>
 
-                        <button type="button" class="btn btn-primary btnPesquisarOrg" onclick="teste();">Pesquisar</button>
+                        <button type="button" class="btn btn-primary btnPesquisarOrg" onclick="pesquisarOrganizacaoEventos();">Pesquisar</button>
                         
                     </div>    
                 </div>
@@ -218,12 +218,12 @@
             
         <div>
             
-            <div class="div-listagem-organizacao" id="div-resultado-listagem-organizacao">
+            <div class="div-listagem-organizacao" id="div-resultado-listagem-organizacao"><!-- 
                         
                 <div class="div-titulo-listagem-organizacao"> <p> <b> <i>Resultados Encontrados <i> <b></p> </div>            
                 
                 <div>
-                    <div class="div-titulo-organizacao"> <center> <p> <b> <i>id_tipo_org nome_org <i> <b></p> </center> </div>
+                    <div class="div-titulo-organizacao"> <center> <p> <b> <i><a href="form_alteracao.php?id=$XXXX" class="linksCrud"><img class="btn-editar" src="src/img/btn-lapis-editar.png" alt="..."  ></a> <a href="form_alteracao.php?id=$XXXX" class="linksCrud"><img class="btn-editar" src="src/img/img-excluir.png" alt="..." ></a>id_tipo_org nome_org <i> <b></p> </center> </div>
                     
                     <div class="div-resultado-organizacao">  
                         <div class="div-titulo-organizacao"> <center> <p> <b> <i>Informações <i> <b></p> </center> </div>                      
@@ -235,9 +235,9 @@
                     
                     <div class="div-resultado-organizacao">                        
                         <div class="div-titulo-organizacao"> <center> <p> <b> <i>Programação <i> <b></p> </center> </div>
-                        <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
-                                                                    - 01/10/2020 Atividade Exemplo 2 <br> 
-                                                                    - 01/10/2020 Atividade Exemplo 3  <br> 
+                        <div class="div-eventos-organizacao"> <p> <i><img class="btn-editar" src="src/img/btn-lapis-editar.png" alt="..."> <img class="btn-editar" src="src/img/img-excluir.png" alt="..."> - 01/10/2020 Atividade Exemplo 1 <br> 
+                        <img class="btn-editar" src="src/img/btn-lapis-editar.png" alt="..."> <img class="btn-editar" src="src/img/img-excluir.png" alt="..."> - 01/10/2020 Atividade Exemplo 2 <br> 
+                        <img class="btn-editar" src="src/img/btn-lapis-editar.png" alt="..."> <img class="btn-editar" src="src/img/img-excluir.png" alt="..."> - 01/10/2020 Atividade Exemplo 3  <br> 
                                                                     + Clique aqui para detalhar <i> </p> 
                         </div>
                     </div>
@@ -256,13 +256,13 @@
                     
                     <div class="div-resultado-organizacao">                        
                         <div class="div-titulo-organizacao"> <center> <p> <b> <i>Programação <i> <b></p> </center> </div>
-                        <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <br> 
+                        <div class="div-eventos-organizacao"> <p> <i> - 01/10/2020 Atividade Exemplo 1 <img class="btnimg-editar" src="src/img/btn-lapis-editar.png" alt="..."> <br> 
                                                                     - 01/10/2020 Atividade Exemplo 2 <br> 
                                                                     - 01/10/2020 Atividade Exemplo 3  <br> 
                                                                     + Clique aqui para detalhar <i> </p> 
                         </div>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         
@@ -274,8 +274,7 @@
 
 
 <script>
-  function teste() {
-
+  function pesquisarOrganizacaoEventos() {
 	let form = document.formularioFiltroOrganizacao;
     console.log(form.nomeOrganizacao.value);
 
@@ -292,7 +291,20 @@
         document.getElementById("div-resultado-listagem-organizacao").innerHTML=this.responseText;
       }
     }
-    xmlhttp.open("GET","funcoesOrganizacao.php?nomeOrganizacao="+nomeOrganizacao+"&nomeAtividade="+nomeAtividade+"&dataCalendario="+dataCalendario+"&estado="+estado+"&cidade="+cidade+"&nomeendereco="+nomeendereco,true);
+    xmlhttp.open("GET","funcoesOrganizacao.php?nomeOrganizacao="+nomeOrganizacao+"&nomeAtividade="+nomeAtividade+"&dataCalendario="+dataCalendario+"&estado="+estado+"&cidade="+cidade+"&nomeendereco="+nomeendereco+"&id_div_eventos=recuperaorg"+"&id_organizacao=0",true);
     xmlhttp.send(); 
   }
+
+  function detalharProgramacao(id_div_eventos, id_organizacao, nomeAtividade, dataCalendario) {
+    var xmlhttp=new XMLHttpRequest();
+    xmlhttp.onreadystatechange=function() {
+        if (this.readyState==4 && this.status==200) {
+            document.getElementById(id_div_eventos).innerHTML=this.responseText;
+        }
+    }
+    xmlhttp.open("GET","funcoesOrganizacao.php?id_div_eventos="+id_div_eventos+"&id_organizacao="+id_organizacao+"&nomeAtividade="+nomeAtividade+"&dataCalendario="+dataCalendario+"&nomeOrganizacao=0"+"&nomeendereco=0"+"&estado=0"+"&cidade=0",true);
+    xmlhttp.send(); 
+
+    }
+
 </script>
