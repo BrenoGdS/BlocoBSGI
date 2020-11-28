@@ -183,7 +183,7 @@ $bairro = $_GET["bairro"];
 	
 	$stmt->execute();
 
-  echo"<h1>Alteração efetuada com sucesso</h1>";
+  echo"<h4>Alteração efetuada com sucesso</h4>";
 
   } catch (PDOException$e) {
   echo"Erro: ".$e->getMessage();

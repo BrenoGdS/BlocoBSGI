@@ -147,7 +147,7 @@
     $stmt->execute();
      
     
-    echo "<h1>Exclusão efetuada com sucesso</h1>";
+    echo "<h3>Exclusão efetuada com sucesso</h3>";
   } catch(PDOExeception $e){
       echo "Erro: ".$e -> getMessage();
   }  

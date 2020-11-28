@@ -180,7 +180,7 @@
 
 	$stmt -> execute();
 
-	echo "<h1>Inclusão efetuada com sucesso</h1>";
+	echo "<h4>Inclusão efetuada com sucesso</h4>";
   
   } catch(PDOExeception $e){
     echo "Erro: ".$e -> getMessage();

@@ -160,15 +160,15 @@
                         <?php  
                         try{
                           include_once "../inc/conectabd.php";
-                            $query = "SELECT id_tipo_org , desc_tipo_org FROM tb_tipo_organizacao;";
+                          $query = "SELECT id_organizacao , nome_org FROM tb_organizacao ORDER BY nome_org;";
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
                             echo "<select name=\"organizacao\">";
                             echo '<option default value="">SELECIONE</option>';
                             // busca os dados lidos do banco de dados
                             while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
-                                $id = $row["id_tipo_org"];
-                                $curso = $row["desc_tipo_org"];
+                                $id = $row["id_organizacao"];
+                                $curso = $row["nome_org"];
                                         // <option value="1">Anal. Des. Sist</option> 
                                 echo "<option value=\"$id\">";
                                 echo  $curso . '</option>';
@@ -260,7 +260,7 @@
 
 		  <div class="col-sm-1">
           <label for="num_evento">Nº</label>
-          <input type="number" class="form-control" name="num" id="num" value="<?php echo $linha["num_evento"];?>"><br>
+          <input type="number: min=0 max=99" class="form-control" name="num" id="num" value="<?php echo $linha["num_evento"];?>"><br>
           </div>
 
 

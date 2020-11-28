@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-   <!-- <script src="script.js"></script> -->
+    
 
     <!-- Link estilos-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -106,7 +106,7 @@
             /* tamanho das colunas */
             .col-25 {
                 float: left;
-                width: 20%;
+                width: 100%;
                 margin-top: 2px;/* era 6px */
                 padding: 5px;   /* espaço entre os campos */
             }
@@ -144,26 +144,25 @@
         
         ?>
          <form action="insercao.php"  method="GET" style="margin: 6%">
-      <div class="row">
-
-
-        <div class="col-sm-3">
+         <div class="container">  
+          <div class="row">
+          <div class="col-sm">
         <label class="label-index" for="organizacao" id="organizacao">
                         Organizacao:
                         </label>
                         <?php  
                         try{
                           include_once "../inc/conectabd.php";
-                            $query = "SELECT id_tipo_org , desc_tipo_org FROM tb_tipo_organizacao;";
+                            $query = "SELECT id_organizacao , nome_org FROM tb_organizacao ORDER BY nome_org;";
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
                             echo "<select name=\"organizacao\">";
                             echo '<option default value="">SELECIONE</option>';
                             // busca os dados lidos do banco de dados
                             while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
-                                $id = $row["id_tipo_org"];
-                                $curso = $row["desc_tipo_org"];
-                                        // <option value="1">Anal. Des. Sist</option> 
+                                $id = $row["id_organizacao"];
+                                $curso = $row["nome_org"];
+                                         
                                 echo "<option value=\"$id\">";
                                 echo  $curso . '</option>';
                             }
@@ -174,14 +173,14 @@
                         ?>
         </div>
 
-        <div class="col-sm-3">
+        <div class="col-sm">
         <label class="label-index" for="tipo" id="tipo">
                         Tipo de Evento:
                         </label>
                         <?php  
                         try{
                           include_once "../inc/conectabd.php";
-                            $query = "SELECT id_tipo_evento , desc_tipo_evento FROM tb_tipo_evento;";
+                            $query = "SELECT id_tipo_evento , desc_tipo_evento FROM tb_tipo_evento ORDER BY desc_tipo_evento;";
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
                             echo "<select name=\"tipo\">";
@@ -202,33 +201,37 @@
         </div>
 
 
-        <div class="col-sm-3">
+        <div class="col-sm">
           <label for="titulo">Titulo</label>
           <input type="text" class="form-control" name="tit" id="tit"><br>
         </div>
+        </div>
+  </div>
 
-        <div class="col-sm-3">
+  <div class="container">
+  <div class="row">
+    <div class="col-sm">
           <label for="data_evento">Data do Evento</label>
           <input type="datetime-local" class="form-control" name="data" id="data"><br>
         </div>
         
 
-        <div class="col-sm-3">
+        <div class="col-sm">
           <label for="CEP_evento">CEP</label>
-          <input type="number" class="form-control" name="cep" id="cep"><br>
+          <input type="text" class="form-control" name="cep" id="cep" value="" onblur="pesquisacep(this.value);"><br>
         </div>
 
        
 
-        <div class="col-sm-3">
-        <label class="label-index" for="cidade" id="cidade">
+        <div class="col-sm">
+        <label class="label-index" for="cidad" id="cidade">
                         Cidade:
                         </label>
                         <?php //cadastro.php
                         // lista Alunos cadastrados  
                         try{
                           include_once "../inc/conectabd.php";
-                            $query = "SELECT id_cidade, desc_Cidade FROM tb_cidade;";
+                            $query = "SELECT id_cidade, desc_Cidade FROM tb_cidade ORDER BY desc_cidade;";
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
                             echo "<select name=\"cidade\">";
@@ -247,27 +250,35 @@
                         }  
                         ?>
         </div>
+        </div>
+</div>
 
-        <div class="col-sm-4">
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
           <label for="logradouro_evento">Endereço</label>
           <input type="text" class="form-control" name="logradouro" id="logradouro"><br>
         </div>
 
         <div class="col-sm-1">
           <label for="num_evento">Nº</label>
-          <input type="number" class="form-control" name="num" id="num"><br>
+          <input type="number: min=0 max=99" class="form-control" name="num" id="num"><br>
         </div>
 
-        <div class="col-sm-5">
+        <div class="col-sm">
           <label for="complemento_evento">Complemento</label>
           <input type="text" class="form-control" name="complemento" id="complemento"><br>
         </div>
-      
+        </div>
+</div>
 
       
-        <div class="col-sm-3">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
           <label for="bairro_evento">Bairro</label>
           <input type="text" class="form-control" name="bairro" id="bairro"><br>
+        </div>
         </div>
         </div>
       
@@ -279,3 +290,74 @@
         
 </body>
 </html>
+
+
+
+
+<script type="text/javascript" >
+    
+    function limpa_formulário_cep() {
+            //Limpa valores do formulário de cep.
+            document.getElementById('logradouro').value=("");
+            document.getElementById('complemento').value=("");
+            document.getElementById('bairro').value=("");
+            
+            
+    }
+
+    function meu_callback(conteudo) {
+        if (!("erro" in conteudo)) {
+            //Atualiza os campos com os valores.
+            document.getElementById('logradouro').value=(conteudo.logradouro);
+            document.getElementById('bairro').value=(conteudo.bairro);
+
+        } //end if.
+        else {
+            //CEP não Encontrado.
+            limpa_formulário_cep();
+            alert("CEP não encontrado.");
+        }
+    }
+        
+    function pesquisacep(valor) {
+
+        //Nova variável "cep" somente com dígitos.
+        var cep = valor.replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                document.getElementById('logradouro').value="...";
+                document.getElementById('bairro').value="...";
+
+
+                //Cria um elemento javascript.
+                var script = document.createElement('script');
+
+                //Sincroniza com o callback.
+                script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
+
+                //Insere script no documento e carrega o conteúdo.
+                document.body.appendChild(script);
+
+            } //end if.
+            else {
+                //cep é inválido.
+                limpa_formulário_cep();
+                alert("Formato de CEP inválido.");
+            }
+        } //end if.
+        else {
+            //cep sem valor, limpa formulário.
+            limpa_formulário_cep();
+        }
+    };
+
+    </script>

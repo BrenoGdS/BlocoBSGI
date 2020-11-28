@@ -1,0 +1,245 @@
+/*
+estilos-v3.1.css - 
+*/
+/* 
+    Created on : 05/11/2020, 11:03:27
+    Author     : Rodrigo Brittes
+*/
+
+
+*{ /* Para aplicar para todas as tags, usar asterisco */
+    box-sizing: border-box;
+    margin:0; /*tirou todas as margens */
+padding:0;
+}
+
+/* parece não funcionar com o boostrap - funciona se <link href="estilo1.css> for a última linha */
+/* não tem necessidade depois que saiu a barra de navegação com os links */
+a{
+color:#000000; 
+font-family:verdana;
+font-size:14pt;
+font-weight:bold; /* negrito */
+margin-right:25px;
+text-decoration: none; /* retirar sublinhado */
+}
+a:hover{
+color:dodgerblue;
+    text-decoration:none; /* retirar sublinhado - funciona se <link href="estilo1.css> for a última linha */
+}
+
+
+
+/* Figuras do cabeçalho */
+/* Cabeçalho esquerdo: logomarca */
+#cab_esq{
+    /*background-color: white; */
+    display: inline-block;
+height: 140px;      /* estava 160px */
+    object-fit: contain;        
+    padding-top:5px;
+    padding-left:15px;
+width:21%;      /* estava 30%? */
+
+}
+/* Cabeçalho central: nome usuário */
+#cab_central{
+
+}
+/* Cabeçalho direito: ícones */
+#cab_dir{
+    /* background-color: whitesmoke; */
+    display: inline-block;
+    float: right;
+    padding-top:3.6%; 
+    padding-right: 5px;
+    margin-bottom: 0px;
+    
+    /*height: 145px;*/
+     word-spacing:46px;      /* era 52px */
+}
+
+
+/* Menu de navegação sob os ícones */
+/* não tem necessidade depois que saiu a barra de navegação com os links */
+/* Regra pelo atributo id do html */
+#navegar{
+background-color: whitesmoke;   /* tirar esse fundo depois */
+width:100%; 
+height:30px;
+text-align:right;
+word-spacing:2px;  /* adiciona espaço entre as palavras */
+
+}
+
+/* Barra colorida */
+#barra{
+width:100%; 
+height: 10px;
+float: left; 
+background-color: gold;	
+    background-image: linear-gradient(to right, dodgerblue,dodgerblue, gold,gold,gold,gold,gold,gold, red,red);
+}
+
+
+
+
+/* Corpo da página */
+#main{
+    
+    background-image: url('../img/web3-triangles-vertical-background.jpg'); 
+    background-position: center;
+    background-repeat: repeat-x; 
+    font-family:verdana;
+    height: 95%;
+line-height:30px; /* alinha o texto na vertical */
+    padding-left: 15px;
+    width: auto;
+
+}
+
+/* Divs p/ organizar formulários */
+/* Usei essas divs para separar o formulário em 3 partes horizontais, ou quantas forem necessárias */
+#divFormOrg1{
+/* float: center; */
+/* Para 2 colunas col-50 lado a lado centralizadas */
+/* margin-left:19%; /* margem externa (centraliza na página) - estava 19% para col-25=20% */
+margin-left:17.5%; /* margem externa (centraliza na página) - col-25=21.5% */
+
+}
+#divFormOrg2{
+/* float: center; */
+/* Para 2 colunas col-50 lado a lado centralizadas */
+/* margin-left:19%; /* margem externa (centraliza na página) - estava 19% para col-25=20% */
+margin-left:17.5%; /* margem externa (centraliza na página) - col-25=21.5% */
+
+
+}
+#divFormOrg3{
+/* float: center; */
+/* Para 2 colunas col-50 lado a lado centralizadas */
+/* margin-left:19%; /* margem externa (centraliza na página) - estava 19% para col-25=20% */
+margin-left:17.5%; /* margem externa (centraliza na página) - col-25=21.5% */
+
+
+}
+
+
+
+
+
+/* CLASSES */
+/* Regra pelo atributo class do html */ /* Quando vai aplicar o mesmo estilo em vários pontos */
+/* Não lembro onde é isso */
+.opcoes{
+margin-left:0px; /* margem externa */
+padding-left:40px; /*margem interna*/
+padding-right:10px;
+}
+
+/* Título do corpo da página */
+.titulo{
+    /* Ideia: laranja p/ cadastro, azul p/ o resto */
+/*background: orange;         /* Laranja */  
+    background: RGB(2, 130, 190); /*Azul BSGI */
+    
+    border-radius: 10px;
+color: white; /* cor da letra */        
+            
+font-family: verdana;
+font-size: 16pt;
+    font-weight: bold;
+
+    filter: drop-shadow(0 2px 2px rgb(200, 200, 200));
+    height: 8%;
+    
+    line-height:55px; /* alinha o texto na vertical */
+margin-left: 2px; /* margem externa */ 
+    margin-top:22px;
+    margin-bottom:20px;
+padding-left:40px;
+    width: 70%;
+}
+
+
+.div-filtros-Consulta-Organizacao{
+    padding-left: 20%;
+    float: left;
+}
+
+.btnPesquisarOrg{
+    margin-top: 15px;
+    width: 100%;
+}
+
+.imput-index{
+    height: 45px;
+}
+
+.div-listagem-organizacao{
+    overflow:auto;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    width: 70%;
+    border-radius: 15px;
+    background-color: rgba(0, 205, 174, 0.637);
+    height: 460px;
+}
+
+.div-titulo-listagem-organizacao{
+    font-size: 21px;
+    color: white;
+    text-shadow: 0px 4px 8px rgba(6, 8, 129, 0.664);
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-width: 0px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-bottom-color: rgb(255, 255, 255);
+
+
+}
+
+.div-organizacao-evento{    
+    border-bottom-width: 0px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(255, 255, 255);
+    background-color: tomato;
+    height: 100%;
+}
+
+
+.div-titulo-organizacao{
+    font-size: 35px;
+    font-family: calibri;
+    color: white;
+    text-shadow: 0px 4px 8px rgba(9, 34, 177, 0.835);
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    text-align: center;
+    border-width: 0px;
+    border-bottom-width: 1px;
+    border-style: solid;
+    border-bottom-color: rgb(255, 255, 255);
+}
+
+.div-eventos-organizacao{
+    color: white;
+    text-shadow: 0px 4px 8px rgba(8, 24, 110, 0.835);
+    margin-left: 11%;
+    margin-right: 11%;
+    margin-bottom: 40px;
+    text-align: left;
+} 
+
+
+.div-resultado-organizacao{
+    width: 50%;    
+    float: left;
+}

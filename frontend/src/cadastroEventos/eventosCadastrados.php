@@ -1,36 +1,35 @@
 
-	
-	<!HTML>
-
-<!-- modeloGeralTemplate.php
-     Template do layout geral das páginas - RENOMEIE PARA O NOME DO ARQUIVO QUE VOCÊ FOR USAR
-<!-- versao 4.0 - baseado no design feito no Figma -->
-
 <html lang="pt-br">
     <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">    
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
-    
-    <link href="..\css\estilos.css" rel="stylesheet">
-    
+    <!-- JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="consultaCEP.js"></script>    
+    
 
-    <title> BSGI - Eventos Cadastrados </title>
+    <!-- Link estilos-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="..\css\estilos.css" rel="stylesheet">
+
+    <!--CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title> BSGI - Eventos </title>
 
     </head>
     
 <body>
     <header>
         <!-- ATENÇÃO: ainda preciso melhorar o cabeçalho dimensionável -->
-  	<div id="cab_esq">
+  	    <div id="cab_esq">
             <img class="contain" src="..\img\BSGI-logo3c.png" align=left width="99%">
-        </div>
+               </div>
         <!--<div id="cab_central"> 
             <a>Nome do Usuário</a>
         </div> -->
@@ -46,9 +45,10 @@
     
     <section id="barra"> </section>
     <section id="main">
-        <h1 class="titulo">Eventos Cadastrados</h1>
+        <h1 class="titulo">Cadastro de Eventos</h1>
         
-
+    <!-- *** FORMULÁRIO PARA INSERÇÃO DE DADOS *** -->
+  <!--  <form id="formulario" action="insercao_organizacao-v1.4.php" method="GET">-->
         <style>
             input[type=text], select, textarea {
                 width: 100%; 
@@ -126,108 +126,72 @@
             }
             }
         </style>
-
-        <div id="divform">
-            <!-- área central da página -->
-            
-        </div>    
-        
-        
+		<div class="row">                
+                
+            </div>
+            <br>
+            <div class="destaque1">
+                
     <?php
     //cadastro.php
     // lista cursos cadastrados  
 
-	try{
-		include_once "../inc/conectabd.php";
+                include_once "../inc/conectabd.php";
 
-		
-
-			// lista eventos já cadastrados
-			$query = "SELECT id_evento, id_organizacao, id_tipo_evento, titulo, date_format(data_evento,'%d/%c/%Y %Hh') as 
-            data_evento, CEP_evento, id_cidade_evento, logradouro_evento, num_evento, complemento_evento, bairro_evento FROM tb_evento;";
-			$stmt = $conn->prepare($query);
-			$stmt->execute();
-
-			echo "<table border='2'>";
-			echo "<tr>
-					<th>Id</th>
-					<th>Org</th>
-					<th>Tipo</th>
+                $sql = 'SELECT * FROM tb_evento';
+                $stmt = $conn->query($sql);
+                ?>
+               
+			   <table class="table table-bordered table-striped">
+                    <thead style="text-align: center;">
+                    <th>Id</th>                    
+                    <th>Org</th>
+                    <th>Tipo</th>
 					<th>Titulo</th>
-					<th>Data Evento</th>
+                    <th>Data/Hora Evento</th>
                     <th>Cep</th>
-                    <th>Cidade</th>			
+                    <th>Cidade</th>
 					<th>Logradouro</th>
-					<th>Nº</th>
-					<th>Complemento</th>
+                    <th>Nº</th>
+                    <th>Complemento</th>
 					<th>Bairro</th>
-					
-					
-					
-					
-				</tr>";
-			// busca os dados lidos do banco de dados
-			while ($row = $stmt->fetch(PDO:: FETCH_ASSOC)) {
-				$id_evento = $row["id_evento"];
-				$id_organizacao = $row["id_organizacao"];
-				$id_tipo_evento = $row["id_tipo_evento"];
-				$titulo = $row["titulo"];
-				$data_evento = $row["data_evento"];
-                $CEP_evento = $row["CEP_evento"];
-                $id_cidade_evento = $row["id_cidade_evento"];			
-				$logradouro_evento = $row["logradouro_evento"];
-				$num_evento = $row["num_evento"];
-				$complemento_evento = $row["complemento_evento"];
-				$bairro_evento = $row["bairro_evento"];	
-				
-				
-						
-				echo "<tr>";
-				echo      "<td> $id_evento </td>";
-				echo      "<td> $id_organizacao </td>";				
-				echo      "<td> $id_tipo_evento </td>";
-				echo      "<td> $titulo </td>";
-				echo      "<td> $data_evento </td>";
-                echo      "<td> $CEP_evento </td>";	
-                echo      "<td> $id_cidade_evento </td>";		
-				echo      "<td> $logradouro_evento </td>";
-				echo      "<td> $num_evento </td>";
-				echo      "<td> $complemento_evento </td>";
-				echo      "<td> $bairro_evento </td>";
-				
-				
-				
-				
-				// cria link para EXCLUSAO do respectivo id_curso
-				echo '<td><a href="exclusao.php?id='. $row["id_evento"] . '"class="btn btn-danger btn-sm">Excluir</a></td>';
-				// cria link para ALTERACAO do respectivo id_curso
-				echo '<td><a href="form_alteracao.php?id='. $row["id_evento"] . '"class="btn btn-primary btn-sm">Alterar</a></td>';
-				
-				echo "</tr>";
-			}
-			echo "</table>";
-		} catch(PDOExeception $e){
-			echo "Erro: ".$e -> getMessage();
-		}  
-?>  
-        
-        
-        
-
-    </form>
-        
-
-<br>
-<br>
-
-	<a href="form_insercao.php">
-	<button style="background: #4CAF50	; border-radius: 6px; 
-	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Cadastrar novo Evento</button></a>
-	
-	<a href="index.php">
-	<button style="background: #FF0000	; border-radius: 6px; 
-	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar ao início</button></a>
-	
-	
-	</body>
+                    <th style="width: 40px;">Ações</th>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($conn->query($sql) as $row) {
+                            ?>
+                            <tr>
+                                <td><?= $row['id_evento'] ?></td>
+                                <td><?= $row['id_organizacao'] ?></td>
+                                <td><?= $row['id_tipo_evento'] ?></td>
+                                <td><?= $row['titulo'] ?></td>
+								<td><?= $row['data_evento'] ?></td>
+                                <td><?= $row['CEP_evento'] ?></td>
+                                <td><?= $row['id_cidade_evento'] ?></td>
+                                <td><?= $row['logradouro_evento'] ?></td>
+								<td><?= $row['num_evento'] ?></td>
+                                <td><?= $row['complemento_evento'] ?></td>
+                                <td><?= $row['bairro_evento'] ?></td>
+                                <td> <a href="form_alteracao.php?id=<?= $row['id_evento'] ?>">Editar</a>&nbsp;&nbsp;&nbsp;<a href="exclusao.php?id=<?= $row['id_evento'] ?>">Excluir</a></td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                <div class="row centralizar-div" style="margin-right: 20px;">
+                    <div class="form-group col-sm-5">
+                        <a href="form_insercao.php"><input type="button" value="Cadastrar novo Evento" class="btn btn-sm form-control" style="background-color: #4CAF50; color: white; height: 50px; margin-top:0px; font-size: 20px;"></a>
+                    </div>
+                </div>
+                <div class="row centralizar-div" style="margin-right: 20px;">
+                         <div class="form-group col-sm-5">
+                        <a href="index.php"><input type="button" value="Voltar ao início" class="btn btn-sm form-control" style="background-color: #FF0000; color: white; height: 50px; margin-top:0px; font-size: 20px;"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
