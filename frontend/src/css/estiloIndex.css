@@ -243,3 +243,19 @@ padding-left:40px;
     width: 50%;    
     float: left;
 }
+
+.btn-editar{
+    height: 25px;
+    width: 25px;
+}
+
+.linksCrudEvento{
+    height: 25px;
+    width: 25px;
+    margin-right: -5px;
+}
+.linksCrudOrg{
+    height: 25px;
+    width: 25px;
+    margin-left: -30px; 
+}
