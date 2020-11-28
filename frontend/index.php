@@ -35,11 +35,11 @@
         </div> -->
         <div id="cab_dir">
         <!-- novos icones azuis -->    
-                <a href="../user"><img src="src\img\ic-users-b2-128.png" height="10%" ></a>
-                <a href="../info"><img src="src\img\ic-information-b2-128.png" height="9%" ></a>
+                <a href="src/perfil/form_lista_perfil.php"><img src="src\img\ic-users-b2-128.png" height="10%" ></a>
+                <a href="http://www.bsgi.org.br/quemsomos/historia_da_soka_gakkai_no_brasil/"><img src="src\img\ic-information-b2-128.png" height="9%" ></a>
                 <a href="https://www.instagram.com" target="_blank"><img src="src\img\ic-instagram-b2-128.png" height="8.1%" ></a>
                 <a href="https://www.facebook.com/" target="_blank"><img src="src\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="../home"><img src="src\img\ic-home-b2-128.png" height="9%"></a>
+                <a href="index.php"><img src="src\img\ic-home-b2-128.png" height="9%"></a>
         </div>
     </header>
     
