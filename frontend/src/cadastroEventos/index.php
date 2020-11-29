@@ -83,7 +83,7 @@
             /* botão de salvar */
             /* Se não precisar do botão, retirar essa parte */
             input[type=submit] {
-                background-color: #4CAF50;
+                background-color: #788bff;
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -141,7 +141,7 @@
 		<br>
      
 	<a href="eventosCadastrados.php">
-	<button style="background: #4CAF50	; border-radius: 6px; 
+	<button style="background: #4f6367	; border-radius: 6px; 
 	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Listar Eventos</button></a>
  
 

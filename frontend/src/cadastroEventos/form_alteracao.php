@@ -88,7 +88,7 @@
             /* botão de salvar */
             /* Se não precisar do botão, retirar essa parte */
             input[type=submit] {
-                background-color: #4CAF50;
+                background-color: #1a66e0;
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -99,7 +99,7 @@
                 margin-right: 14%;
             }
             input[type=submit]:hover {
-                background-color: #45a049;
+                background-color: #e0e1dd;
             }
 
             
@@ -188,7 +188,7 @@
                         <?php  
                         try{
                           include_once "../inc/conectabd.php";
-                            $query = "SELECT id_tipo_evento , desc_tipo_evento FROM tb_tipo_evento;";
+                            $query = "SELECT id_tipo_evento , desc_tipo_evento FROM tb_tipo_evento ORDER BY desc_tipo_evento;";
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
                             echo "<select name=\"tipo\">";
@@ -231,7 +231,7 @@
                         // lista Alunos cadastrados  
                         try{
                           include_once "../inc/conectabd.php";
-                            $query = "SELECT id_cidade, desc_Cidade FROM tb_cidade;";
+                            $query = "SELECT id_cidade, desc_Cidade FROM tb_cidade ORDER BY desc_Cidade;";
                             $stmt = $conn->prepare($query);
                             $stmt->execute();
                             echo "<select name=\"cidade\">";

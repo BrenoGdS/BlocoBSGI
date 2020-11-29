@@ -195,7 +195,7 @@
 		<br>
      
 	<a href="eventosCadastrados.php">
-	<button style="background: #FF0000	; border-radius: 6px; 
+	<button style="background: #4f6367	; border-radius: 6px; 
 	padding: 15px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Ver eventos cadastrados</button></a>
  
 

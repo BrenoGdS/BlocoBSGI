@@ -67,7 +67,7 @@
             /* botão de limpar  */
             /* Se não precisar do botão, retirar essa parte */
             input[type=reset] {
-                background-color: red;  /* era #4CAF50 */
+                background-color: 4f6367;  /* era #4CAF50 */
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -83,7 +83,7 @@
             /* botão de salvar */
             /* Se não precisar do botão, retirar essa parte */
             input[type=submit] {
-                background-color: #4CAF50;
+                background-color: #4f6367;
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -179,19 +179,18 @@
                         ?>
                     </tbody>
                 </table>
-                <br>
-                <br>
-                <div class="row centralizar-div" style="margin-right: 20px;">
-                    <div class="form-group col-sm-5">
-                        <a href="form_insercao.php"><input type="button" value="Cadastrar novo Evento" class="btn btn-sm form-control" style="background-color: #4CAF50; color: white; height: 50px; margin-top:0px; font-size: 20px;"></a>
-                    </div>
-                </div>
-                <div class="row centralizar-div" style="margin-right: 20px;">
-                         <div class="form-group col-sm-5">
-                        <a href="index.php"><input type="button" value="Voltar ao início" class="btn btn-sm form-control" style="background-color: #FF0000; color: white; height: 50px; margin-top:0px; font-size: 20px;"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+				<br>
+
+               	<a href="form_insercao.php">
+	<button style="background: #1a66e0	; border-radius: 6px; 
+	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Cadastrar novo Evento</button></a>
+	
+	
+	<a href="index.php">
+	<button style="background: #4f6367; border-radius: 6px; 
+	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar ao início</button></a>
+            
+           
+        
     </body>
 </html>

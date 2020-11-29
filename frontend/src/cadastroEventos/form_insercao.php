@@ -72,7 +72,7 @@
             /* botão de limpar  */
             /* Se não precisar do botão, retirar essa parte */
             input[type=reset] {
-                background-color: red;  /* era #4CAF50 */
+                background-color: #4f6367;  /* era #4CAF50 */
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -83,12 +83,12 @@
                 margin-right: 1%;
             }
             input[type=reset]:hover {
-                background-color: rgb(220,0,0); /* era #45a049 - ACERTAR COR EM HOVER */
+                background-color:#e0e1dd; /* era #45a049 - ACERTAR COR EM HOVER */
             }            
             /* botão de salvar */
             /* Se não precisar do botão, retirar essa parte */
             input[type=submit] {
-                background-color: #4CAF50;
+                background-color: #1a66e0;
                 color: white;
                 padding: 12px 20px;
                 border: none;
@@ -99,7 +99,7 @@
                 margin-right: 14%;
             }
             input[type=submit]:hover {
-                background-color: #45a049;
+                background-color: #e0e1dd;
             }
 
             
