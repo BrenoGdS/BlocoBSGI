@@ -2,7 +2,7 @@
 	<?php //cadastro.php
 
 #----------------------------------------------------------------------------------------------------
-require('../../../fpdf182/fpdf.php');
+require('../fpdf182/fpdf.php');
 
 class PDF extends FPDF
 {
@@ -36,11 +36,11 @@ function LoadData()
 {
   // lista cursos cadastrados
 
- include_once "../inc/conectabd.inc.php";
+include_once "../inc/conectabd.inc.php";
 
 // lista cursos já cadastrados
-$query = "SELECT id_evento, id_organizacao, id_tipo_evento, titulo, date_format(data_evento,'%d-%m-%y  %H:%i') as data_evento, CEP_evento, id_cidade_evento,  
-logradouro_evento, num_evento, complemento_evento, bairro_evento FROM tb_evento;";
+$query = "SELECT id_evento, id_organizacao, id_tipo_evento, titulo, date_format(data_evento,'%d-%m-%y  %H:%i') as data_evento,  id_cidade_evento,  
+logradouro_evento, num_evento,  bairro_evento FROM tb_evento;";
 if ($result = mysqli_query($link, $query)) {
 
 	// busca os dados lidos do banco de dados
@@ -49,12 +49,10 @@ if ($result = mysqli_query($link, $query)) {
 		$id_organizacao = $row["id_organizacao"];
 		$id_tipo_evento = $row["id_tipo_evento"];
 		$titulo = $row["titulo"];		
-		$data_evento = $row["data_evento"];
-		
+		$data_evento = $row["data_evento"];		
 		$id_cidade_evento = $row["id_cidade_evento"];
 		$logradouro_evento = $row["logradouro_evento"];
-		$num_evento = $row["num_evento"];
-		$complemento_evento = $row["complemento_evento"];
+		$num_evento = $row["num_evento"];		
 		$bairro_evento = $row["bairro_evento"];
 		
 		$data[] = array($id_evento, $id_organizacao, $id_tipo_evento, $titulo, $data_evento, $id_cidade_evento,
@@ -96,11 +94,9 @@ function FancyTable($header, $data)
 	  $this->Cell($w[2],6,number_format($row[2]),'LR',0,'R',$fill);
 	  $this->Cell($w[3],6,$row[3],'LR',0,'L',$fill);
 	  $this->Cell($w[4],6,$row[4],'LR',0,'L',$fill);
-	  $this->Cell($w[5],6,number_format($row[5]),'LR',0,'R',$fill);
-	  
+	  $this->Cell($w[5],6,number_format($row[5]),'LR',0,'R',$fill);	  
 	  $this->Cell($w[6],6,$row[6],'LR',0,'L',$fill);
-	  $this->Cell($w[7],6,$row[7],'LR',0,'L',$fill);
-	  
+	  $this->Cell($w[7],6,$row[7],'LR',0,'L',$fill);	  
 	  $this->Cell($w[8],6,$row[8],'LR',0,'L',$fill);
 	  $this->Ln();
 	  $fill = !$fill;
