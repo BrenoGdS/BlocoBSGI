@@ -39,7 +39,7 @@
                 <a href="http://www.bsgi.org.br/quemsomos/historia_da_soka_gakkai_no_brasil/"><img src="..\img\ic-information-b2-128.png" height="9%" ></a>
                 <a href="https://www.instagram.com" target="_blank"><img src="..\img\ic-instagram-b2-128.png" height="8.1%" ></a>
                 <a href="https://www.facebook.com/" target="_blank"><img src="..\img\ic-facebook-b2-128.png" height="8.1%"></a>
-                <a href="http://localhost/cadastroEventos/eventos/index.php"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
+                <a href="http://localhost/frontend/index.php"><img src="..\img\ic-home-b2-128.png" height="9%"></a>
         </div>
     </header>
     
@@ -184,9 +184,13 @@
                	<a href="form_insercao.php">
 	<button style="background: #1a66e0	; border-radius: 6px; 
 	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Cadastrar novo Evento</button></a>
+
+<a href="geraPDF_eventos.php">
+	<button style="background: #4f6367; border-radius: 6px; 
+	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Gerar PDF</button></a>
 	
 	
-	<a href="index.php">
+	<a href="http://localhost/frontend/index.php">
 	<button style="background: #4f6367; border-radius: 6px; 
 	padding: 8px; cursor: pointer; color: #fff; border: none; font-size: 16px;">Voltar ao início</button></a>
             
