@@ -73,7 +73,9 @@
  ?>  
         
  <br>
- <a href="form_consulta_org-v3.1.php">Retornar para consulta</a>
+ <a href="../../index.php">Retornar para consulta</a>
+ <br>
+ <a href="form_consulta_org.php">Ir para tabela de organizações</a>
  
  </body>
 </html>

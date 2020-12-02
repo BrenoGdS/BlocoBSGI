@@ -291,8 +291,9 @@
         
 
     <!-- BOTÕES -->
-    <input type="submit" value="Cadastrar" class="btn btn-sm">
-    <input type="reset" onclick="exclui_org.php" value="Excluir" class="btn btn-sm">
+    <input type="submit" value="Alterar cadastro" class="btn btn-sm">
+    <!-- <input type="reset" onclick="exclui_org.php" value="Excluir" class="btn btn-sm"> -->
+    <!-- <input type="button" onclick="form_consulta_org.php" value="Voltar" class="btn btn-sm"> -->
 <!--    </div> <!-- fim do "div formulario" --> 
     </form>
 
