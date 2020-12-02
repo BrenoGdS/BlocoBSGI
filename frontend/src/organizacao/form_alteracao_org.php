@@ -1,12 +1,11 @@
 <!HTML>
 
-<!-- form_inserc_org.php 
-     formulario de insercao das organizaçoes
-<!-- versao 4.2 - baseado em cadastro_bd_pdo (form-insercao.php) 
-     Script do CEP funcionando perfeitamente; Novo layout; 
-     selects Tipo de Organização e cidade funcionando -->
-<!-- Programas acessados: conectabd.php, estilos.css, consultaCEP.js, funcoes_org-v1.5.php, 
-     insercao_organizacao.php -->
+<!-- form_alteracao_org-v2.7.php 
+     formulario de alteração das organizações
+<!-- versao 2.5 - baseado em cadastro_bd_pdo (form-alteracao.php) e form_inserc_org-v3.9.php 
+     Script do CEP funcionando perfeitamente; Novo layout; Tipo de Organização funcionando -->
+<!-- Programas acessados: conectabd.php, estilos.css, consultaCEP.js, funcoes_org_alteracao.php, 
+     alteracao_organizacao.php -->
 
 
 <html lang="pt-br">
@@ -20,17 +19,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <script src="consultaCEP.js"></script>
+    <script src="consultaCEP.js"></script>    
 
     <title> BSGI - Organização </title>
- 
-
+   
     </head>
 
-
+    
 <body>
     <header>
-      
+  
   	<div id="cab_esq">
 		<img class="contain" src="..\img\BSGI-logo3c.png" align=left width="98%">
 	</div> 
@@ -48,11 +46,11 @@
 
     <section id="barra"> </section>
     <section id="main"> 
-        <h1 class="titulo">Cadastro Organizacional - Inclusão</h1>
+        <h1 class="titulo">Cadastro Organizacional  -  Alteração</h1>
 
     
-    <!-- *** FORMULÁRIO PARA INSERÇÃO DE DADOS *** -->
-    <form id="formulario" action="insercao_organizacao.php" method="GET">
+    <!-- *** FORMULÁRIO PARA ALTERAÇÃO DOS DADOS *** -->
+    <!-- <form id="formulario" action="alteracaoS_organizacao-v1.4b.php" method="GET"> <!-- vai ter que ser alteracao  -->
         <style>
             input[type=text], select, textarea {
                 width: 100%; 
@@ -73,7 +71,7 @@
             input[type=reset] {
                 background-color: rgb(220,0,0);  /* era #4CAF50 */
                 color: white;
-                padding: 12px 29px;     /* tamanho do botão */ 
+                padding: 12px 29px;     /* tamanho do botão */
                 border: none;
                 border-radius: 4px;
                 cursor: pointer;
@@ -82,7 +80,7 @@
                 margin-right: 1%;
             }
             input[type=reset]:hover {
-                background-color: red(220,0,0); /* era #45a049 - ACERTAR COR EM HOVER */
+                background-color: red; /* era #45a049 - ACERTAR COR EM HOVER */
             }            
             /* botão de salvar */
             input[type=submit] {
@@ -97,9 +95,9 @@
                 margin-right: 18%;      /* 21% alinha à direita; */
             }
             input[type=submit]:hover {
-                background-color: dodgerblue; /* era #45a049 */
+                background-color: dodgerblue;
             }
-            
+           
             /* tamanho das colunas */
             .col-25 {
                 float: left;
@@ -122,87 +120,102 @@
             
 
         </style>
+            
+
     
+    <?php
+        include_once "../inc/conectabd.php"; // ativar o database
+        include_once "../inc/funcoes_org_alteracao.php";
+        $id = $_GET["id"];
+        $row = le_organizacao33($conn, $id);
+        //$linha = compara_tipo_org4($conn, $id);
+    ?>
     
-<!--    <div id="divform"> -->
-    <div id="divFormOrg1" class="container">
+    <form id="formulario" action="alteracao_organizacao.php" method="GET">    
+    <div id="divFormOrg1" class="container"> 
         <div class="row"> <!-- organiza os campos em blocos -->
-            <?php
-                include_once "../inc/conectabd.php"; // ativar o database
-                include_once "../inc/funcoes_org.php";
-            ?>
             
             <div class="col-50">
+                <input type="hidden" name="id" value="<?php echo $row["id_organizacao"]; ?>"> 
+                
             <label for="idNomeOrg"> </label>
-		<input type="text" name="nome_org" id="idNomeOrg" placeholder="Nome da Organização" required 
-                 class="form-control">
+                <input type="text" name="nome_org" id="idNomeOrg" 
+                       placeholder="Nome da Organização" class="form-control mb-1 mr-sm-2"
+                       value="<?php  $row=compara_nome_org($conn,$id); ?>">
             </div>
             <br> 
-
-            <!-- SELECT DINÂMICO -->
-            <div class="col-25">
-            <label for="idTipoOrg"> </label> 
-            <select name="id_tipo_org" id="idTipoOrg" class="form-control" 
-                    value="<?php le_tipo_org($conn); ?>" required>
-            </select> 
-            </div>
-            <br>             
- 
-            <div class="col-25">
-           <label for="idNomeOrgPai"> </label>
-            <select name="id_organizacao_pai" id="idNomeOrgPai" class="form-control mb-1 mr-sm-2"
-                    value='<?php le_organização_pai($conn); ?>' >
-                
-            </select> 
-            </div>
-        </div>
-
         
-        <div class="row"> <!-- organiza os campos em blocos -->   
+            <!-- SELECT DINÂMICO -->
+            <div class="col-25"> 
+            
+            <label for="idTipoOrg"> </label> 
+            <select name="id_tipo_org" id="idTipoOrg" class="form-control mb-1 mr-sm-2" >
+            <?php 
+                $row = compara_tipo_org5($conn, $id);
+            ?>
+            </select>
+            </div>
+            
+        
+            <div class="col-25">
+            <label for="idNomeOrgPai"> </label>
+            <!-- VERIFICAR ESSA PARTE - INNER JOIN tipo+nome bloco -->
+
+            <select name="id_organizacao_pai" id="idNomeOrgPai" class="form-control mb-1 mr-sm-2"
+                    value='<?php $row=compara_organização_pai3($conn); ?>' >
+            </select>             
+            </div>
+            <br>   
+            
             <div class="col-50">
             <label for="idLiderOrg1"> </label>
-            <select name="id_lider_organizacional1" id="idLiderOrg1" class="form-control mb-1 mr-sm-2">
-                    <option default value="">Líder Organizacional 1 (selecione)</option>
-                    <option value="1">Nome de Usuário 1</option>
-                    <option value="2">Nome de Usuário 2</option>
+            <select name="Id_Lider_Organizacional1" id="idLiderOrg1" class="form-control mb-1 mr-sm-2">
+                <optgroup label="Líder Organizacional 1 (selecione)">
+                    <option value="">Líder Organizacional 1 (selecione)</option>
+                    <option value="1">Usuário 1</option>
+                    <option value="2">Usuário 2</option>
+                </optgroup>
             </select>
             </div>
             
             <div class="col-50">
             <label for="idLiderOrg2"> </label>
             <select name="Id_Lider_Organizacional2" id="idLiderOrg2" class="form-control mb-1 mr-sm-2">
-                    <option default value="">Líder Organizacional 2 (selecione)</option>
+                <optgroup label="Líder Organizacional 2 (selecione)">
+                    <option value="">Líder Organizacional 2 (selecione)</option>
                     <option value="1">Usuário 1</option>
                     <option value="2">Usuário 2</option>
+                </optgroup>
             </select>            
             </div>
             
         </div>
-
     </div> <!-- fim do "divFormOrg1" -->
 
-    
 
     <div id="divFormOrg2" class="container">  
         
         <div class="row">
             <div class="col-25">
             <label for="idFoneFixoOrg"> </label>
-		<input type="tel" name="tel_fixo_org" id="idFoneOrg" placeholder="Fone fixo (1133332222)" 
-                 pattern="[0-9]{2}[0-9]{4}[0-9]{4}" class="form-control mb-1 mr-sm-2">
+		<input type="tel" name="tel_fixo_org" id="idFoneOrg" 
+                       placeholder="Telefone fixo" class="form-control mb-1 mr-sm-2"
+                       value="<?php  $row=compara_telfixo_org($conn,$id); ?>">
             </div>
             <br>
         
             <div class="col-25">
             <label for="idFoneCelOrg"> </label>
-		<input type="tel" name="tel_cel_org" id="idFoneOrg" placeholder="Celular  (11999998888)" 
-                 pattern="[0-9]{2}[0-9]{5}[0-9]{4}" class="form-control mb-1 mr-sm-2">
+		<input type="tel" name="tel_cel_org" id="idFoneOrg" 
+                       placeholder="Telefone celular" class="form-control mb-1 mr-sm-2"
+                       value="<?php  $row=compara_telcel_org($conn,$id); ?>">
             </div>
             
             <div class="col-50">
                 <label for="idEmailOrg"> </label>
-		<input type="email" name="email_org" id="idEmailOrg" placeholder="E-mail da Organização (exemplo@org.com)" 
-                 class="form-control mb-1 mr-sm-2">
+		<input type="email" name="email_org" id="idEmailOrg" 
+                       placeholder="E-mail" class="form-control mb-1 mr-sm-2"
+                       value="<?php  $row=compara_email_org($conn,$id); ?>">
             </div>            
 
         </div>
@@ -211,43 +224,48 @@
     
     
     <div id="divFormOrg3" class="container">
-        <div class="row"> <!-- organiza os campos em blocos -->
-        <!-- SELECT DINÂMICO -->
+        <div class="row">
             <div class="col-25">
             <label for="cep"> </label>
-            <input type="number" class="form-control mb-1 mr-sm-2" name="cep_org" id="cep" placeholder="CEP"
-                   min="01000000">
+            <input type="number" name="CEP_org" id="cep" 
+                   placeholder="CEP" class="form-control mb-1 mr-sm-2"
+                   value="<?php  $row=compara_cep_org($conn,$id); ?>">
             </div>
-
+        
+        <!-- SELECT DINÂMICO (class="form-control mb-1 mr-sm-2") -->
             <div class="col-25"> 
             <label for="idUFOrg" > </label>
-            <input type="text" class="form-control" name="uf_org" id="estado" placeholder="UF">
+            <select name="id_uf" id="estado" class="form-control mb-1 mr-sm-2">
+            <?php 
+                $row=compara_uf_org($conn, $id); 
+            ?>
+            </select>    
             </div>
-
-
-
 
             <div class="col-50">
-            <label for="cidade"> </label> 
-            <select name="id_cidade_org" id="cidade" class="form-control mb-1 mr-sm-2" 
-                    value="<?php le_cidade($conn); ?>">
-                
+            <label for="cidade"> </label>
+            <select name="id_cidade_org" id="cidade" class="form-control" value="<?php  le_cidade2($conn); ?>">
+            <?php
+                $row=compara_cidade_org6($conn, $id);
+            ?>
             </select>
-            </div>
-        </div>
-
-                
+            </div> 
+        </div> 
+        
         <div class="row"> <!-- organiza os campos em blocos -->
             <div class="col-50">
             <label for="logradouro"> </label>
-		<input type="text" class="form-control" name="logradouro_org" id="logradouro" placeholder="Logradouro">
+		<input type="text" name="logradouro_org" id="logradouro"
+                       placeholder="Logradouro" class="form-control"
+                       value="<?php  $row=compara_logradouro_org($conn,$id); ?>">
             </div>
             <br>
             
             <div class="col-25">    
             <label for="idNumLogradouroOrg"> </label>
-                <input type="number" name="num_org" id="idNumLogradouroOrg" placeholder="Número (1-9999)" 
-                 min="0" max="9999" class="form-control mb-1 mr-sm-2">
+                <input type="number" name="num_org" id="idNumLogradouroOrg" min="0" max="9999" 
+                       placeholder="Número (1-9999)" class="form-control mb-1 mr-sm-2"
+                       value="<?php  $row=compara_num_org($conn,$id); ?>">
             </div>
             <br>
 
@@ -255,26 +273,29 @@
         <div class="row">
             <div class="col-50">    
             <label for="idComplementoOrg"> </label>
-        	<input type="text" name="complemento_org" id="complemento" placeholder="Complemento" 
-                 class="form-control mb-1 mr-sm-2">
+        	<input type="text" name="complemento_org" id="complemento" 
+                       placeholder="Complemento" class="form-control mb-1 mr-sm-2"
+                       value="<?php  $row=compara_complemento_org($conn,$id); ?>">
             </div>        
 
             <div  class="col-25">    
             <label for="bairro"> </label>
-        	<input type="text" name="bairro_org" id="bairro" placeholder="Bairro" class="form-control">
- 
+        	<input type="text" name="bairro_org" id="bairro"  
+                       placeholder="Bairro" class="form-control"
+                       value="<?php  $row=compara_bairro_org($conn,$id); ?>">
             </div>
             <br>
         </div>
-        
     </div> <!-- fim do "divFormOrg3" -->   
     <br>
+        
+
+    <!-- BOTÕES -->
+    <input type="submit" value="Cadastrar" class="btn btn-sm">
+    <input type="reset" onclick="exclui_org.php" value="Excluir" class="btn btn-sm">
+<!--    </div> <!-- fim do "div formulario" --> 
+    </form>
 
     
-    <input type="submit" value="Cadastrar" class="btn btn-sm">
-    <input type="reset" value="Limpar" class="btn  btn-sm">
-
-    </form>
-       
 </body>
 </html>
