@@ -211,7 +211,7 @@
 
 
             // cria link para ALTERACAO do respectivo id
-            echo '<td><a href="form_alteracao_org-v2.7.php?id='. $row['id_organizacao'] . '">Alterar</a></td>';  
+            echo '<td><a href="form_alteracao_org.php?id='. $row['id_organizacao'] . '">Alterar</a></td>';  
 
             // cria link para EXCLUSAO do respectivo id
             echo '<td><a href="exclui_org.php?id='. $row["id_organizacao"] . '">Excluir</a></td>';
