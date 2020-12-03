@@ -83,17 +83,10 @@ try {
   $row = array();
   
   // obter desc_tipo_org da tb_tipo_organizacao a partir do id_tipo_org da tb_organizacao
-  $query = 'SELECT tb_organizacao.id_tipo_org, tb_tipo_organizacao.id_tipo_org, tb_tipo_organizacao.desc_tipo_org 
-            FROM tb_organizacao INNER JOIN tb_tipo_organizacao
-            ON tb_tipo_organizacao.id_tipo_org = tb_organizacao.id_tipo_org
-            WHERE id_organizacao = '.$id_organizacao_sel.';';  
-  
-/*  $query = 'SELECT tb_organizacao.id_organizacao, tb_organizacao.id_tipo_org, tb_tipo_organizacao.id_tipo_org, tb_tipo_organizacao.desc_tipo_org 
+  $query = 'SELECT tb_organizacao.id_organizacao, tb_organizacao.id_tipo_org, tb_tipo_organizacao.id_tipo_org, tb_tipo_organizacao.desc_tipo_org 
             FROM tb_organizacao INNER JOIN tb_tipo_organizacao
             ON tb_tipo_organizacao.id_tipo_org = tb_organizacao.id_tipo_org
             WHERE id_organizacao = '.$id_organizacao_sel.';';
- * 
- */
   
   $stmt = $conn->prepare($query);
   if ($stmt->execute()) {
@@ -145,7 +138,7 @@ try {
    /*  *AQUI FICA O AUTO-RELACIONAMENTO DA TB_ORGANIZAÇÃO*  */
 
   //$query = "SELECT id_organizacao, id_tipo_org, id_organizacao_pai, nome_org FROM tb_organizacao ORDER BY nome_org;";
-  $query = "SELECT id_organizacao, id_tipo_org, id_organizacao_pai, nome_org FROM tb_organizacao ORDER BY nome_org;";  
+  $query = "SELECT id_organizacao, id_tipo_org, id_organizacao_pai, nome_org FROM tb_organizacao;";  
   $stmt = $conn->prepare($query);
   
   $stmt->execute();

@@ -1,6 +1,6 @@
 <!HTML>
 
-<!-- form_consulta_org-v3.3.php 
+<!-- form_consulta_org-v3.2.php 
      formulario de insercao das organizaçoes
 <!-- versao 1.1 - baseado em cadastro_bd_pdo (form-insercao.php) e form_inserc_org-v4.1.php
      Script do CEP funcionando perfeitamente; Novo layout; 
@@ -144,8 +144,7 @@
   include_once "../inc/conectabd.php"; // ativar o database
 
   // lista todo conteúdo cadastrado
-  $query = 'SELECT id_organizacao, id_tipo_org, nome_org, tel_fixo_org, tel_cel_org, email_org,'
-          . 'CEP_org, id_cidade_org, logradouro_org, num_org, complemento_org, bairro_org FROM tb_organizacao;';
+  $query = 'SELECT * FROM tb_organizacao;';
   
   $stmt = $conn->prepare($query);
   $stmt->execute();
@@ -156,6 +155,7 @@
   echo "<tr>
             <th>Id</th>
             <th>Tipo</th>
+            <th>Organização-Pai</th>
             <th>Nome da Organização</th>
             
             <th>Tel fixo</th>
@@ -176,6 +176,7 @@
    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             $id_organizacao = $row["id_organizacao"];
             $id_tipo_org = $row["id_tipo_org"];
+            $id_organizacao_pai = $row["id_organizacao_pai"];
             $nome_org = $row["nome_org"];
             
             $tel_fixo_org = $row["tel_fixo_org"];
@@ -194,6 +195,7 @@
             echo "<style> td{ padding: 3px; text-align: center}"."</style>";
             echo "<td> $id_organizacao </td>";
             echo "<td> $id_tipo_org </td>";
+            echo "<td> $id_organizacao_pai </td>";
             echo "<td> $nome_org </td>";
             
             echo "<td> $tel_fixo_org </td>";

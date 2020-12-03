@@ -244,13 +244,9 @@
 
             <div class="col-50">
             <label for="cidade"> </label>
-            <select name="id_cidade_org" id="cidade" class="form-control" 
-                    value="<?php 
-                                le_cidade2($conn); 
-                                $row=compara_cidade_org6($conn, $id);
-                            ?>">
+            <select name="id_cidade_org" id="cidade" class="form-control" value="<?php  le_cidade2($conn); ?>">
             <?php
-
+                $row=compara_cidade_org6($conn, $id);
             ?>
             </select>
             </div> 

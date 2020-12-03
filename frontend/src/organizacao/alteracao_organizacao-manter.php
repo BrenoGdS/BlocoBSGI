@@ -1,5 +1,5 @@
 <!HTML>
-<!-- alteracao_organizacao-v1.3.php -->
+<!-- alteracao_organizacao-v1.2.php -->
 	
 <html lang="pt-br">
     <head>
@@ -42,18 +42,18 @@
 <?php 
 // efetua alteração do cadastro da organização informado em form_alteracao.php
     //$id_organizacao = $_GET["id"];
-    $nome_org = $_GET["nome_org"];
     $id_tipo_org = $_GET["id_tipo_org"];
-#    $id_organizacao_pai = $_GET["id_organizacao_pai"];
     
-    #$id_lider_org1 = $_GET["Id_Lider_Organizacional1"];      // ESTÁ FALTANDO
-    #$id_lider_org2 = $_GET["Id_Lider_Organizacional2"];      // ESTÁ FALTANDO    
+    $id_organizacao_pai = $_GET["id_organizacao_pai"];
+    $nome_org = $_GET["nome_org"];
+    
+    $id_lider_org1 = $_GET["Id_Lider_Organizacional1"];      // ESTÁ FALTANDO
+    $id_lider_org2 = $_GET["Id_Lider_Organizacional2"];      // ESTÁ FALTANDO    
     
     $tel_fixo_org = $_GET["tel_fixo_org"];
     $tel_cel_org = $_GET["tel_cel_org"];
     $email_org = $_GET["email_org"];
         #INSERIR VALIDAÇÃO
-    
     $CEP_org = $_GET["CEP_org"];
     $id_cidade_org = $_GET["id_cidade_org"];
     $logradouro_org = $_GET["logradouro_org"];
@@ -65,46 +65,13 @@
     
   try {
     include_once "../inc/conectabd.php";
-    
-    
-    $query = "UPDATE tb_organizacao 
-        SET nome_org = :nome_org,
-            id_tipo_org = :id_tipo_org,
-            tel_fixo_org = :tel_fixo_org,
-            tel_cel_org = :tel_cel_org,
-            email_org = :email_org,
-            CEP_org = :CEP_org,
-            id_cidade_org = :id_cidade_org,
-            logradouro_org = :logradouro_org,
-            num_org = :num_org,
-            complemento_org = :complemento_org,
-            bairro_org = :bairro_org
-            WHERE id_organizacao = :id;";
- 
- 
 
-    
-/*    $query = "UPDATE tb_organizacao 
-        SET nome_org = :nome_org,
-            id_tipo_org = :id_tipo_org,
-            tel_fixo_org = :tel_fixo_org,
-            tel_cel_org = :tel_cel_org,
-            email_org = :email_org,
-            CEP_org = :CEP_org,
-            id_cidade_org = :id_cidade_org,
-            logradouro_org = :logradouro_org,
-            num_org = :num_org,
-            complemento_org = :complemento_org,
-            bairro_org = :bairro_org 
-            WHERE id_organizacao = :id
-            AND tb_organizacao.id_tipo_org = tb_tipo_organizacao.id_tipo_org;";
-*/
-    
-    
-/*        $query = "UPDATE tb_organizacao 
-        INNER JOIN tb_tipo_organizacao ON tb_tipo_org.id_tipo_org = tb_organizacao.id_tipo_org 
-        SET nome_org = :nome_org,
-            id_tipo_org = :id_tipo_org,  
+  $query = "UPDATE tb_organizacao 
+        SET id_tipo_org = :id_tipo_org,
+            
+            id_organizacao_pai = :id_organizacao_pai
+
+            nome_org = :nome_org,
             tel_fixo_org = :tel_fixo_org,
             tel_cel_org = :tel_cel_org,
             email_org = :email_org,
@@ -115,18 +82,15 @@
             complemento_org = :complemento_org,
             bairro_org = :bairro_org 
             WHERE id_organizacao = :id;";
-*/   
- 
 
     //id_organizacao_pai = :id_organizacao_pai,
     $stmt = $conn->prepare($query);
 
-    
-    $stmt->bindValue(":nome_org", $nome_org, PDO::PARAM_STR);
+    echo "chkp1";    
     $stmt->bindValue(":id_tipo_org", $id_tipo_org, PDO::PARAM_INT);
     
-#    $stmt->bindValue(":id_organizacao_pai", $id_organizacao_pai, PDO::PARAM_INT);
-    
+    $stmt->bindValue(":id_organizacao_pai", $id_organizacao_pai, PDO::PARAM_INT);
+    $stmt->bindValue(":nome_org", $nome_org, PDO::PARAM_STR);
     $stmt->bindValue(":tel_fixo_org", $tel_fixo_org, PDO::PARAM_INT);
     $stmt->bindValue(":tel_cel_org", $tel_cel_org, PDO::PARAM_INT); 
     $stmt->bindValue(":email_org", $email_org, PDO::PARAM_STR);
@@ -136,8 +100,7 @@
     $stmt->bindValue(":num_org", $num_org, PDO::PARAM_INT);
     $stmt->bindValue(":complemento_org", $complemento_org, PDO::PARAM_STR);
     $stmt->bindValue(":bairro_org", $bairro_org, PDO::PARAM_STR);
- #   $stmt->bindValue(":id_organizacao", $id_organizacao, PDO::PARAM_INT);
-    $stmt->bindValue(":id", $id_organizacao, PDO::PARAM_INT);
+    $stmt->bindValue(":id_organizacao", $id_organizacao, PDO::PARAM_INT);
 
     // Lider 1 e 2
     //$stmt->bindValue(":variavel1", $variavel1, PDO::PARAM_STR);
@@ -150,7 +113,6 @@
   }
   
 ?>  
- <br>
  <br>
  <a href="form_consulta_org.php">Retornar para consulta</a>
  
