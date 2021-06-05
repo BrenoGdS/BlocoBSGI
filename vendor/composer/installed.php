@@ -629,12 +629,12 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '9.5.4',
-            'version' => '9.5.4.0',
+            'pretty_version' => '9.5.5',
+            'version' => '9.5.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
-            'reference' => 'c73c6737305e779771147af66c96ca6a7ed8a741',
+            'reference' => '89ff45ea9d70e35522fb6654a2ebc221158de276',
             'dev_requirement' => true,
         ),
         'psr/container' => array(
