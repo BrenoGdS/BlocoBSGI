@@ -1,6 +1,6 @@
 <?php
   
-  $link = mysqli_connect("localhost", "root", "", "blocobsgi");
+  $link = mysqli_connect("localhost", "root", "bsgi_bmr", "blocobsgi");
   
   // mysqli_connect_errno - devolve o código do erro
   if (mysqli_connect_errno()) {
