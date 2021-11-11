@@ -11,11 +11,11 @@ CREATE TABLE Usuario (
     idusuario INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nomeusuario VARCHAR(60) NOT NULL,
     emailusuario VARCHAR(60) NOT NULL,
-    senhausuario VARCHAR(60) NOT NULL,
+    senhausuario VARCHAR(15) NOT NULL,
     boladministrador SMALLINT NOT NULL,
     codusuario INTEGER,
     telefoneusuario BIGINT(11) ZEROFILL,
-    codtiposexo TINYINT(1) NOT NULL
+    sexo varchar(10) NOT NULL
 );
 
 CREATE TABLE Organizacao (
@@ -81,10 +81,6 @@ CREATE TABLE Regiao (
     descregiao VARCHAR(12) NOT NULL
 );
 
-CREATE TABLE tiposexo (
-    codtiposexo TINYINT(1) PRIMARY KEY NOT NULL,
-    desctiposexo VARCHAR(12) NOT NULL
-);
  
 ALTER TABLE LiderOrganizacional ADD CONSTRAINT FKLiderOrganizacional1
     FOREIGN KEY (idorganizacao)
