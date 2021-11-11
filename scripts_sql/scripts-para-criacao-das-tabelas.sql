@@ -15,7 +15,7 @@ CREATE TABLE Usuario (
     boladministrador SMALLINT NOT NULL,
     codusuario INTEGER,
     telefoneusuario BIGINT(11) ZEROFILL,
-    sexo varchar(10) NOT NULL
+    sexo varchar(15) NOT NULL
 );
 
 CREATE TABLE Organizacao (
